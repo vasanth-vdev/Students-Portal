@@ -1,0 +1,85 @@
+table {
+    position: relative;
+    top: 50px;
+    left: 260px;
+    width: 850px;
+    height: 600px;
+    border-collapse: collapse;
+    background: rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(24px);
+    border-radius: 20px;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 50px -10px rgba(0, 0, 0, 0.61);
+    background-image: url('./images/Frost.png');
+}
+
+th,
+td,
+table {
+    padding: 10px;
+    font-size: 17px;
+    letter-spacing: 0.07rem;
+    font-weight: 500;
+    border: 4px solid #FFFFFF;
+    border-radius: 20px;
+}
+
+th {
+    font-weight: 700;
+    font-size: 19px;
+}
+
+#cont-left,
+#cont-left1 {
+    text-align: right;
+    width: 550px;
+    padding-right: 20px;
+}
+
+#cont-right,
+#cont-right1 {
+    text-align: left;
+    width: 350px;
+    padding-left: 20px;
+}
+
+#cont-left-edit,
+#cont-right-edit {
+    position: relative;
+    backdrop-filter: blur(24px);
+    border-radius: 0px;
+    box-sizing: border-box;
+    box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.04);
+    background-image: url('./images/Frost.png');
+    width: 180px;
+    left: 592px;
+    top: 47px;
+}
+
+#cont-left-edit {
+    border-bottom-left-radius: 20px;
+    text-align: right;
+    padding: 10px;
+    padding-right: 20px;
+}
+
+#cont-right-edit {
+    border-bottom-right-radius: 20px;
+    padding: 10px;
+    padding-left: 20px;
+}
+
+#Pay-btn {
+    position: absolute;
+    width: 260px;
+    height: 50px;
+    top: 770px;
+    left: 260px;
+    background: rgba(44, 150, 48, 0.9);
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.3rem;
+}

@@ -1,0 +1,117 @@
+#L_Form {
+    position: relative;
+    width: 1220px;
+    height: 560px;
+    left: 60px;
+    top: 60px;
+    background-color: linear-gradient(98.41deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.4) 30%);
+    box-shadow: 4px 4px 24px -4px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(240px);
+    border-radius: 20px;
+    border: 4px solid rgba(255, 255, 255, 0.75);
+    display: grid;
+}
+
+#L_Form h3 {
+    position: absolute;
+    width: 100px;
+    height: 28px;
+    letter-spacing: 0.07rem;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+#name,
+#from,
+#roll,
+#to,
+#Reason {
+    position: absolute;
+    width: 400px;
+    height: 35px;
+    border-radius: 10px;
+    border: 2px solid #C3C3C3;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1) inset;
+    font-size: 18px;
+    letter-spacing: 0.06rem;
+}
+
+#H_name {
+    top: 43px;
+    left: 60px;
+}
+
+#name {
+    top: 60px;
+    left: 160px;
+}
+
+#H_from {
+    top: 43px;
+    left: 640px;
+}
+
+#from {
+    top: 61px;
+    left: 740px;
+}
+
+#H_roll {
+    top: 140px;
+    left: 60px;
+}
+
+#roll {
+    top: 160px;
+    left: 160px;
+}
+
+#H_id {
+    top: 140px;
+    left: 645px;
+}
+
+#to {
+    top: 160px;
+    left: 742px;
+}
+
+#H_reason {
+    top: 240px;
+    left: 60px;
+}
+
+#Reason {
+    position: absolute;
+    width: 980px;
+    height: 120px;
+    top: 260px;
+    left: 160px;
+    border-radius: 10px;
+    border: 2px solid Linear Gradient rgba(195, 195, 195, 0.6) 0% rgba(195, 195, 195, 0.4) 100%;
+}
+
+#H_document {
+    top: 400px;
+    left: 60px;
+}
+
+#doc {
+    position: absolute;
+    top: 428px;
+    left: 230px;
+}
+
+#Print_btn {
+    position: relative;
+    width: 280px;
+    height: 50px;
+    left: 450px;
+    top: 470px;
+    background: rgba(44, 150, 48, 0.9);
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.3rem;
+}
