@@ -1,13 +1,12 @@
 import React from "react";
-import './Login.css';
-import Dash from './Dash';
-import logo from './images/LogoW.png';
+import './../../assets/css/Login.css';
+
 
 function Login() {
     return (
         <div id="Body">
             <div id="Blue">
-                <img id="logo" src={logo} alt="" />
+              
                 <h1>PSG POLYTECHNIC COLLEGE <br /> PEELAMEDU COIMBATORE - 641004</h1>
                 <div id="White">
                     <h2>Login to Your Account</h2>
@@ -41,9 +40,7 @@ function Login() {
                     <input type="text" id="Roll" name="Roll" />
                     <h4 id="nameP">Password</h4>
                     <input type="Password" id="Pass" name="Pass" />
-                    <button id="Login" onClick={() => {
-                        return Dash();
-                    }}>LOGIN</button>
+                    <button id="Login" >LOGIN</button>
                 </div>
             </div>
         </div >

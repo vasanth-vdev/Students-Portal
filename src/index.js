@@ -1,11 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-//import Dash from "./Dash";
-import Login from "./Login";
+import App from "./App.js"
 
 ReactDOM.render(
     <React.StrictMode>
-        <Login />
+        <App />
     </React.StrictMode>,
     document.getElementById('root')
 );
