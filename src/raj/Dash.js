@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 //import Camarks from "./Camarks";
-import './Dash.css';
+// import './Dash.css';
 import Logo from './images/Logo.png';
 import arrowDown from './images/arrowDown.svg'
 import arrowUp from './images/arrowUp.svg'

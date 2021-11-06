@@ -4,6 +4,7 @@ import LoginSwitchBtn from './../components/LoginSwitchBtn'
 import LoginInput from '../components/LoginInput.js'
 import './../assets/css/Login.css'
 
+
 const Login = () => {
     return (
         <div className='loginPage'>
@@ -27,7 +28,7 @@ const Login = () => {
                 <form className='formControlGroup'>
                     <LoginInput inputName='Roll No' type='text'/>
                     <LoginInput inputName='Password'type='password'/>
-                    <div className='loginBtn'>LOGIN</div>
+                    <button className='loginBtn' >LOGIN</button>
                 </form>
             </div>
         </div>
