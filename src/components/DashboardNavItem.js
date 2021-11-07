@@ -22,8 +22,8 @@ const DashboardNavItem = ({ data }) => {
       <div className={subNav ? 'navListContainerF' : 'navListContainerN'}>
         {data.subMenu.length !== 0
           ? data.subMenu.map((item, index) => (
-              <div className='navListItem' key={index}>
-                <span className='navListIcon'>{item.icon}</span>
+              <div className='navListItem' key={index} onClick={subNavHandler}>
+                {/* <span className='navListIcon'>{item.icon}</span> */}
                 <h1 className='navListText'>{item.title}</h1>
               </div>
             ))

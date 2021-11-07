@@ -4,7 +4,7 @@ import { MdOutlineDashboard } from 'react-icons/md';
 import { MdSchool } from 'react-icons/md';
 import { MdLuggage } from 'react-icons/md';
 import { SiMicrosoftacademic } from 'react-icons/si';
-import { BiSitemap } from 'react-icons/bi';
+// import { BiSitemap } from 'react-icons/bi';
 
 const StudentDashboardData = [
   {
@@ -28,32 +28,27 @@ const StudentDashboardData = [
           subMenu: [
             {
               title: 'Posted Leave Printout',
-              icon: <BiSitemap />,
+              // icon: <BiSitemap />,
               URL: '',
             },
             {
               title: 'Semester Fee Structure',
-              icon: <BiSitemap />,
               URL: '',
             },
             {
               title: 'Online Fee Collection',
-              icon: <BiSitemap />,
               URL: '',
             },
             {
               title: 'Students Attendance',
-              icon: <BiSitemap />,
               URL: '',
             },
             {
               title: 'CA Marks',
-              icon: <BiSitemap />,
               URL: '',
             },
             {
               title: 'Feednack',
-              icon: <BiSitemap />,
               URL: '',
             },
           ],
@@ -65,22 +60,18 @@ const StudentDashboardData = [
           subMenu: [
             {
               title: 'Time Table',
-              icon: <BiSitemap />,
               URL: '',
             },
             {
               title: 'Seating Arrangement',
-              icon: <BiSitemap />,
               URL: '',
             },
             {
               title: 'Exam Timetable',
-              icon: <BiSitemap />,
               URL: '',
             },
             {
               title: 'Exam Result',
-              icon: <BiSitemap />,
               URL: '',
             },
           ],
