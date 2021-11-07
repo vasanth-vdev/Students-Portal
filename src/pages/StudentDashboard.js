@@ -6,7 +6,7 @@ import { MdOutlineFingerprint } from 'react-icons/md';
 import { MdOutlineLogout } from 'react-icons/md';
 import NavItem from './../components/DashboardNavItem';
 
-const StudentDashboard = () => {
+const StudentDashboard = ({ children }) => {
   return (
     <div className='StudentsDashboardPage'>
       {StudentDashboardData.map((item, index) => (
@@ -48,9 +48,7 @@ const StudentDashboard = () => {
             </div>
           </div>
         ))}
-        <div className='dashboardContent'>
-          {/* props has to be passed as children for different pages */}
-        </div>
+        <div className='Content'>{children}</div>
       </div>
     </div>
   );
