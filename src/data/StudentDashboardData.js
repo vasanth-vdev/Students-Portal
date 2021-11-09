@@ -18,68 +18,66 @@ const StudentDashboardData = [
         {
           navTitle: 'Dashboard',
           navIcon: <MdOutlineDashboard />,
-          active: true,
+          navURL: '/StudentsDashboard',
           subMenu: [],
         },
         {
           navTitle: 'Academic',
           navIcon: <SiMicrosoftacademic />,
-          active: false,
           subMenu: [
             {
               title: 'Posted Leave Printout',
               // icon: <BiSitemap />,
-              URL: '',
+              URL: 'PostedLeavePrintout',
             },
             {
               title: 'Semester Fee Structure',
-              URL: '',
+              URL: 'SemesterFeeStructure',
             },
             {
               title: 'Online Fee Collection',
-              URL: '',
+              URL: 'OnlineFeeCollection',
             },
             {
-              title: 'Students Attendance',
-              URL: '',
+              title: 'StudentsAttendance',
+              URL: 'StudentsAttendance',
             },
             {
               title: 'CA Marks',
-              URL: '',
+              URL: 'CAMarks',
             },
             {
-              title: 'Feednack',
-              URL: '',
+              title: 'Feedback',
+              URL: 'Feedback',
             },
           ],
         },
         {
           navTitle: 'Examination',
           navIcon: <MdSchool />,
-          active: false,
           subMenu: [
             {
-              title: 'Time Table',
-              URL: '',
+              title: 'Test Timetable',
+              URL: 'TestTimetable',
             },
             {
               title: 'Seating Arrangement',
-              URL: '',
+              URL: 'SeatingArrangement',
             },
             {
               title: 'Exam Timetable',
-              URL: '',
+              URL: 'ExamTimetable',
             },
             {
               title: 'Exam Result',
-              URL: '',
+              URL: 'ExamResult',
             },
           ],
         },
         {
           navTitle: 'Hostel',
           navIcon: <MdLuggage />,
-          active: false,
+          navURL: '/Hostel',
           subMenu: [],
         },
       ],
