@@ -1,11 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
-//import Dash from "./Dash";
-import Login from "./Login";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App.js';
 
 ReactDOM.render(
+  <BrowserRouter>
     <React.StrictMode>
-        <Login />
-    </React.StrictMode>,
-    document.getElementById('root')
+      <App />
+    </React.StrictMode>
+  </BrowserRouter>,
+  document.getElementById('root')
 );
