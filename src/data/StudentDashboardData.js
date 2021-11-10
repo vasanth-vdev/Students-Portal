@@ -4,10 +4,16 @@ import { MdOutlineDashboard } from 'react-icons/md';
 import { MdSchool } from 'react-icons/md';
 import { MdLuggage } from 'react-icons/md';
 import { SiMicrosoftacademic } from 'react-icons/si';
-import TestTimetable from '../pages/TestTimetable';
-import SeatingArrangement from '../pages/SeatingArrangement';
-import ExamTimeTable from '../pages/ExamTimeTable';
-import ExamResult from '../pages/ExamResult';
+import TestTimetable from '../pages/Examination/TestTimetable';
+import SeatingArrangement from '../pages/Examination/SeatingArrangement';
+import ExamTimeTable from '../pages/Examination/ExamTimeTable';
+import ExamResult from '../pages/Examination/ExamResult';
+import PostedLeavePrintout from '../pages/Academic/PostedLeavePrintout';
+import SemesterFeeStructure from '../pages/Academic/SemesterFeeStructure';
+import OnlineFeeCollection from '../pages/Academic/OnlineFeeCollection';
+import StudentsAttendance from '../pages/Academic/StudentsAttendance';
+import CAMarks from '../pages/Academic/CAMarks';
+import Feedback from '../pages/Academic/Feedback';
 // import { BiSitemap } from 'react-icons/bi';
 
 const StudentDashboardData = [
@@ -33,26 +39,32 @@ const StudentDashboardData = [
               title: 'Posted Leave Printout',
               // icon: <BiSitemap />,
               URL: 'PostedLeavePrintout',
+              page: PostedLeavePrintout,
             },
             {
               title: 'Semester Fee Structure',
               URL: 'SemesterFeeStructure',
+              page: SemesterFeeStructure,
             },
             {
               title: 'Online Fee Collection',
               URL: 'OnlineFeeCollection',
+              page: OnlineFeeCollection,
             },
             {
               title: 'StudentsAttendance',
               URL: 'StudentsAttendance',
+              page: StudentsAttendance,
             },
             {
               title: 'CA Marks',
               URL: 'CAMarks',
+              page: CAMarks,
             },
             {
               title: 'Feedback',
               URL: 'Feedback',
+              page: Feedback,
             },
           ],
         },

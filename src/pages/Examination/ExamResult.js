@@ -1,8 +1,8 @@
 import React from 'react';
-import Table from '../components/Table';
-import PageHeader from '../components/PageHeader';
-import PageContent from '../components/PageContent';
-import ExamResultData from '../data/ExamResultData';
+import Table from './../../components/Table';
+import PageHeader from './../../components/PageHeader';
+import PageContent from './../../components/PageContent';
+import ExamResultData from './../../data/Examination/ExamResultData';
 const ExamResult = () => {
   return (
     <div>

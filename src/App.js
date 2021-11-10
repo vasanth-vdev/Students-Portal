@@ -12,6 +12,7 @@ const App = () => {
       <Switch>
         <Route path='/'>
           <StudentDashboard>
+            <Route exact path='/' component={TodaySchedule} />
             <Route exact path='/StudentsDashBoard' component={TodaySchedule} />
             {StudentDashboardData.map((item) =>
               item.sidebar.navItems.map((item) =>

@@ -1,8 +1,8 @@
 import React from 'react';
-import Table from '../components/Table';
-import PageHeader from '../components/PageHeader';
-import PageContent from '../components/PageContent';
-import SeatingArrangementData from '../data/SeatingArrangementData';
+import Table from './../../components/Table';
+import PageHeader from './../../components/PageHeader';
+import PageContent from './../../components/PageContent';
+import SeatingArrangementData from './../../data/Examination/SeatingArrangementData';
 const SeatingArrangement = () => {
   return (
     <div>

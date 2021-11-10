@@ -1,8 +1,8 @@
 import React from 'react';
-import Table from '../components/Table';
-import PageHeader from './../components/PageHeader';
-import PageContent from './../components/PageContent';
-import TestTimeTableData from '../data/TestTimetableData';
+import Table from '../../components/Table';
+import PageHeader from '../../components/PageHeader';
+import PageContent from '../../components/PageContent';
+import TestTimeTableData from '../../data/Examination/TestTimetableData';
 const TestTimetable = () => {
   return (
     <div>
