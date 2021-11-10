@@ -4,6 +4,7 @@ import { MdOutlineDashboard } from 'react-icons/md';
 import { MdSchool } from 'react-icons/md';
 import { MdLuggage } from 'react-icons/md';
 import { SiMicrosoftacademic } from 'react-icons/si';
+import TestTimetable from '../pages/TestTimetable';
 // import { BiSitemap } from 'react-icons/bi';
 
 const StudentDashboardData = [
@@ -59,6 +60,7 @@ const StudentDashboardData = [
             {
               title: 'Test Timetable',
               URL: 'TestTimetable',
+              page: TestTimetable,
             },
             {
               title: 'Seating Arrangement',

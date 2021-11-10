@@ -5,7 +5,7 @@ import Login from './pages/Login.js';
 import StudentDashboard from './pages/StudentDashboard';
 import TodaySchedule from './pages/TodaySchedule';
 import StudentDashboardData from './data/StudentDashboardData';
-import TestTimetable from './pages/TestTimetable';
+
 const App = () => {
   return (
     <>
@@ -20,7 +20,7 @@ const App = () => {
                     exact
                     path={`/${item.URL}`}
                     key={index}
-                    component={TestTimetable}
+                    component={item.page}
                   />
                 ))
               )
