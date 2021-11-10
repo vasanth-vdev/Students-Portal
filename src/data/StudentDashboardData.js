@@ -5,6 +5,9 @@ import { MdSchool } from 'react-icons/md';
 import { MdLuggage } from 'react-icons/md';
 import { SiMicrosoftacademic } from 'react-icons/si';
 import TestTimetable from '../pages/TestTimetable';
+import SeatingArrangement from '../pages/SeatingArrangement';
+import ExamTimeTable from '../pages/ExamTimeTable';
+import ExamResult from '../pages/ExamResult';
 // import { BiSitemap } from 'react-icons/bi';
 
 const StudentDashboardData = [
@@ -65,14 +68,17 @@ const StudentDashboardData = [
             {
               title: 'Seating Arrangement',
               URL: 'SeatingArrangement',
+              page: SeatingArrangement,
             },
             {
               title: 'Exam Timetable',
               URL: 'ExamTimetable',
+              page: ExamTimeTable,
             },
             {
               title: 'Exam Result',
               URL: 'ExamResult',
+              page: ExamResult,
             },
           ],
         },
