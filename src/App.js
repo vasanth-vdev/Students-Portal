@@ -5,13 +5,14 @@ import Login from './pages/Login.js';
 import StudentDashboard from './pages/StudentDashboard';
 import TodaySchedule from './pages/TodaySchedule';
 import StudentDashboardData from './data/StudentDashboardData';
-import TestTimetable from './pages/TestTimetable';
+
 const App = () => {
   return (
     <>
       <Switch>
         <Route path='/'>
           <StudentDashboard>
+            <Route exact path='/' component={TodaySchedule} />
             <Route exact path='/StudentsDashBoard' component={TodaySchedule} />
             {StudentDashboardData.map((item) =>
               item.sidebar.navItems.map((item) =>
@@ -20,7 +21,7 @@ const App = () => {
                     exact
                     path={`/${item.URL}`}
                     key={index}
-                    component={TestTimetable}
+                    component={item.page}
                   />
                 ))
               )

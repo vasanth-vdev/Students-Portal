@@ -1,10 +1,10 @@
 import React from 'react';
 import './../assets/css/StudentDashboard.css';
-import StudentDashboardData from './../data/StudentDashboardData.js';
+import StudentDashboardData from '../data/StudentDashboardData.js';
 import { MdOutlineNotificationsActive } from 'react-icons/md';
 import { MdOutlineFingerprint } from 'react-icons/md';
 import { MdOutlineLogout } from 'react-icons/md';
-import NavItem from './../components/DashboardNavItem';
+import NavItem from '../components/DashboardNavItem';
 
 const StudentDashboard = ({ children }) => {
   return (
