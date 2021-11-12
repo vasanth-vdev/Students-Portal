@@ -10,7 +10,6 @@ import ExamTimeTable from '../pages/Examination/ExamTimeTable';
 import ExamResult from '../pages/Examination/ExamResult';
 import PostedLeavePrintout from '../pages/Academic/PostedLeavePrintout';
 import SemesterFeeStructure from '../pages/Academic/SemesterFeeStructure';
-import OnlineFeeCollection from '../pages/Academic/OnlineFeeCollection';
 import StudentsAttendance from '../pages/Academic/StudentsAttendance';
 import CAMarks from '../pages/Academic/CAMarks';
 import Feedback from '../pages/Academic/Feedback';
@@ -45,11 +44,6 @@ const StudentDashboardData = [
               title: 'Semester Fee Structure',
               URL: 'SemesterFeeStructure',
               page: SemesterFeeStructure,
-            },
-            {
-              title: 'Online Fee Collection',
-              URL: 'OnlineFeeCollection',
-              page: OnlineFeeCollection,
             },
             {
               title: 'StudentsAttendance',

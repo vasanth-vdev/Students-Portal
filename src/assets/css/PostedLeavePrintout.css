@@ -6,6 +6,8 @@
   backdrop-filter: blur(1rem);
   border-radius: 20px;
   padding: 5rem 0;
+  display: flex;
+  flex-direction: column;
 }
 .PostedLeavePrintoutContainer::after {
   content: '';
