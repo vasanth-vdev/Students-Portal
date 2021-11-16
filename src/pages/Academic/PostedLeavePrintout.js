@@ -3,6 +3,8 @@ import PageHeader from '../../components/PageHeader';
 import PageContent from '../../components/PageContent';
 import './../../assets/css/PostedLeavePrintout.css';
 import SideNameInput from '../../components/SideNameInput';
+import GreenButton from './../../components/GreenButton';
+
 const PostedLeavePrintout = () => {
   return (
     <div>
@@ -34,7 +36,7 @@ const PostedLeavePrintout = () => {
             marginLeft='2rem'
           />
 
-          {/* Button Component */}
+          <GreenButton marginCenter>Print</GreenButton>
         </div>
       </PageContent>
     </div>

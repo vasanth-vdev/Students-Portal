@@ -5,23 +5,24 @@ const Table = ({ data }) => {
   return (
     <div className='tableWrapper'>
       <table>
-        {data.map((item, index) => (
-          <>
-            <tr key={index}>
-              {item.titles.map((title) => (
-                <th>{title}</th>
-              ))}
-            </tr>
-
-            {item.contents.map((contents) => (
-              <tr>
-                {contents.map((content) => (
-                  <td>{content}</td>
+        {data &&
+          data.map((item, index) => (
+            <>
+              <tr key={index}>
+                {item.titles.map((title) => (
+                  <th>{title}</th>
                 ))}
               </tr>
-            ))}
-          </>
-        ))}
+
+              {item.contents.map((contents) => (
+                <tr>
+                  {contents.map((content) => (
+                    <td>{content}</td>
+                  ))}
+                </tr>
+              ))}
+            </>
+          ))}
       </table>
     </div>
   );
