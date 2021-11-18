@@ -1,35 +1,35 @@
 const StudentsAttendanceData = [
   {
-    percentage: '75%',
-    subjectName: 'Content Management System',
-  },
-  {
-    percentage: '65%',
-    subjectName: 'Content Management System',
-  },
-  {
-    percentage: '35%',
-    subjectName: 'Content Management System',
+    percentage: '98%',
+    subjectName: 'Computer networks',
   },
   {
     percentage: '100%',
-    subjectName: 'Content Management System',
+    subjectName: 'Information security',
   },
   {
-    percentage: '80%',
-    subjectName: 'Content Management System',
+    percentage: '92%',
+    subjectName: 'Content management system',
   },
   {
-    percentage: '75%',
-    subjectName: 'Content Management System',
+    percentage: '90%',
+    subjectName: 'Miniproject & Entreprenurship',
   },
   {
-    percentage: '65%',
-    subjectName: 'Content Management System',
+    percentage: '100%',
+    subjectName: 'Computer network administration laboratory',
+  },
+  {
+    percentage: '94%',
+    subjectName: 'Web technology laboratory',
+  },
+  {
+    percentage: '100%',
+    subjectName: 'Smart device programming laboratory',
   },
   {
     percentage: '35%',
-    subjectName: 'Content Management System',
+    subjectName: 'Ethical hacking and penetration testing laboratory',
   },
 ];
 export default StudentsAttendanceData;
