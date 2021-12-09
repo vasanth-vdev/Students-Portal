@@ -1,10 +1,10 @@
 const ExamTimeTableData = [
   {
-    titles: ['Date', 'Session', 'COURSE CODE & COURSE TITLe', 'Time'],
+    titles: ['DATE', 'SESSION', 'COURSE CODE & COURSE TITLE'],
     contents: [
-      ['12/12/2012', 'Afternoon', 'Ethical Hacking Laboratory', '12:12 PM'],
-      ['12/12/2012', 'Afternoon', 'Ethical Hacking Laboratory', '12:12 PM'],
-      ['12/12/2012', 'Afternoon', 'Ethical Hacking Laboratory', '12:12 PM'],
+      ['09/12/2021', 'F.N', 'Computer Networks'],
+      ['11/12/2021', 'F.N', 'Information security'],
+      ['14/12/2021', 'F.N', 'Content management system'],
     ],
   },
 ];

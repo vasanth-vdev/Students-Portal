@@ -69,33 +69,18 @@ const TodayScheduleData = [
     3: [
       {
         subject: 'Content Management System',
-        time: '9:20 - 10:10',
-        facultyIncharge: 'Wednesday',
+        time: '09:20 - 10:10',
+        facultyIncharge: 'Ms. Aishwaryalakshmi G',
       },
       {
-        subject: 'Content Management System',
-        time: '9:20 - 10:10',
-        facultyIncharge: '',
+        subject: 'Computer network administration laboratory',
+        time: '10:30 - 12:50',
+        facultyIncharge: 'Ms. Thilakaveni P',
       },
       {
-        subject: 'Content Management System',
-        time: '9:20 - 10:10',
-        facultyIncharge: '',
-      },
-      {
-        subject: 'Content Management System',
-        time: '9:20 - 10:10',
-        facultyIncharge: '',
-      },
-      {
-        subject: 'Content Management System',
-        time: '9:20 - 10:10',
-        facultyIncharge: '',
-      },
-      {
-        subject: 'Content Management System',
-        time: '9:20 - 10:10',
-        facultyIncharge: '',
+        subject: 'Smart device programming laboratory',
+        time: '01:50 - 04:20',
+        facultyIncharge: 'Ms. Haritha Deepthi A',
       },
     ],
     4: [

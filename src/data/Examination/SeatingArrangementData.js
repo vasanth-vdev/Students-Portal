@@ -1,10 +1,10 @@
 const SeatingArrangementData = [
   {
-    titles: ['Date', 'COURSE CODE & COURSE TITLe', 'Hall', 'seat'],
+    titles: ['DATE', 'TIME', 'COURSE CODE & COURSE TITLE', 'HALL', 'SEAT'],
     contents: [
-      ['12/12/2012', 'Ethical Hacking Laboratory', 'I606', '18'],
-      ['12/12/2012', 'Ethical Hacking Laboratory', 'I606', '18'],
-      ['12/12/2012', 'Ethical Hacking Laboratory', 'I606', '18'],
+      ['09/12/2021', '10:00', 'Computer Netwroks', 'I603', '15'],
+      ['11/12/2021', '10:00', 'Ethical Hacking Laboratory', 'I604', '09'],
+      ['14/12/2021', '10:00', 'Ethical Hacking Laboratory', 'I605', '07'],
     ],
   },
 ];

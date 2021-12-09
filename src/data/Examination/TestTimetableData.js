@@ -1,10 +1,10 @@
 const TestTimeTableData = [
   {
-    titles: ['Date', 'Time', 'COURSE CODE & COURSE TITLe', 'faculty'],
+    titles: ['DATE', 'TIME', 'COURSE CODE & COURSE TITLE', 'FACULTY'],
     contents: [
-      ['12/12/2012', '12:12', 'Ethical Hacking Laboratory', 'Haritha Deepthi'],
-      ['12/12/2012', '12:12', 'Ethical Hacking Laboratory', 'Haritha Deepthi'],
-      ['12/12/2012', '12:12', 'Ethical Hacking Laboratory', 'Haritha Deepthi'],
+      ['20/10/2021', '10:00', 'Computer networks', 'Ms. Thilakaveni P'],
+      ['21/10/2021', '10:00', 'Information security', 'Ms. Haritha Deepthi A'],
+      ['22/10/2021', '10:00', 'Content management system', 'Ms. Aishwaryalakshmi G'],
     ],
   },
 ];
