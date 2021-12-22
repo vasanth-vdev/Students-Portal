@@ -14,7 +14,7 @@ const DashboardNavItem = ({ data, sideBarHandle }) => {
 		<>
 			{data.subMenu.length === 0 ? (
 				<NavLink
-					to={data.navURL}
+					to={`/${data.navURL}`}
 					onClick={data.subMenu && subNavHandler && sideBarHandle}
 					className='navContainer'>
 					<div className='navHeader'>
@@ -40,7 +40,7 @@ const DashboardNavItem = ({ data, sideBarHandle }) => {
 						{data.subMenu.length !== 0
 							? data.subMenu.map((item, index) => (
 									<NavLink
-										to={item.URL}
+										to={`/${item.URL}`}
 										className='navListItem'
 										key={index}
 										onClick={subNavHandler && sideBarHandle}>

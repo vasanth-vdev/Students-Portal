@@ -55,6 +55,7 @@ const StudentDashboard = ({ children }) => {
 								style={{ transform: 'rotatez(180deg)' }}
 							/>
 						</div>
+
 						<div className='sidebarContentCollapsed'>
 							{item.sidebar.navItems.map((item, index) =>
 								item.subMenu.length === 0 ? (
@@ -106,9 +107,9 @@ const StudentDashboard = ({ children }) => {
 							<div className='userActionBtn password'>
 								<MdOutlineFingerprint />
 							</div>
-							<div className='userActionBtn logout'>
+							<NavLink className='userActionBtn logout' to='/Login'>
 								<MdOutlineLogout />
-							</div>
+							</NavLink>
 						</div>
 					</div>
 				))}

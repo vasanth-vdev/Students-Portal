@@ -28,7 +28,6 @@
 	position: absolute;
 	content: '';
 	top: 0;
-
 	width: 40rem;
 	height: 100%;
 	background: url('./../images/backgrounds/frost.png');
@@ -157,7 +156,7 @@
 	justify-content: center;
 }
 .navItemCollapsedIcon {
-	font-size: 5rem;
+	font-size: 4.5rem;
 }
 .sidebarContentCollapsed {
 	width: 10rem;
@@ -167,10 +166,10 @@
 .sidebarHeaderTitleCollapsed {
 	font-weight: 900;
 	font-size: 28px;
+	writing-mode: vertical-rl;
 	line-height: 33px;
 	letter-spacing: 0.07em;
-	bottom: 0;
-	margin-bottom: 7rem;
-	transform: rotate(270deg);
 	position: absolute;
+	bottom: 0;
+	margin: 0 0 2.5rem 2.5rem;
 }
