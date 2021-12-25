@@ -27,7 +27,7 @@ const StudentDashboardData = [
 				{
 					navTitle: 'Dashboard',
 					navIcon: <MdOutlineDashboard />,
-					navURL: '/StudentsDashboard',
+					navURL: '',
 					subMenu: [],
 				},
 				{

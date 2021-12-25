@@ -18,6 +18,7 @@ const App = () => {
 						</StudentDashboard>
 					}
 				/>
+
 				<Route path='StudentsDashboard' element={<Navigate replace to='/' />} />
 				{StudentDashboardData.map((item) =>
 					item.sidebar.navItems.map((item) =>
