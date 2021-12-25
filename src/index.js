@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App.js';
-import * as serviceWorker from './serviceWorker';
+
 ReactDOM.render(
 	<BrowserRouter>
 		<React.StrictMode>
@@ -11,4 +11,9 @@ ReactDOM.render(
 	</BrowserRouter>,
 	document.getElementById('root')
 );
-serviceWorker.register();
+
+if ('serviceWorker' in navigator) {
+	navigator.serviceWorker
+		.register(`${process.env.PUBLIC_URL}/service-worker.js`)
+		.catch((err) => console.log('Error 💥', err));
+}

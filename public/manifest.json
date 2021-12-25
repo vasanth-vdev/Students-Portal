@@ -1,7 +1,7 @@
 {
 	"short_name": "Students Zone",
 	"name": "PSG PTC Students Zone",
-	"start_url": "/",
+	"start_url": ".",
 	"background_color": "#ffffff",
 	"theme_color": "#3f51b5",
 	"orientation": "portrait-primary",
