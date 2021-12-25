@@ -41,7 +41,7 @@
 	transition: transform 0.5s;
 }
 .MobileContent {
-	padding: 2.5rem;
+	padding: 2.5rem 1.25rem;
 }
 .userActionBtnMobile {
 	display: grid;
