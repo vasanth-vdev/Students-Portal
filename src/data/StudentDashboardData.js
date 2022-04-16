@@ -9,7 +9,8 @@ import SeatingArrangement from '../pages/Examination/SeatingArrangement';
 import ExamTimeTable from '../pages/Examination/ExamTimeTable';
 import ExamResult from '../pages/Examination/ExamResult';
 import PostedLeavePrintout from '../pages/Academic/PostedLeavePrintout';
-import SemesterFeeStructure from '../pages/Academic/SemesterFeeStructure';
+//import SemesterFeeStructure from '../pages/Academic/SemesterFeeStructure';
+import ProfileViewer from '../pages/ProfileViewer';
 import StudentsAttendance from '../pages/Academic/StudentsAttendance';
 import CAMarks from '../pages/Academic/CAMarks';
 import Feedback from '../pages/Academic/Feedback';
@@ -42,8 +43,8 @@ const StudentDashboardData = [
 						},
 						{
 							title: 'Semester Fee Structure',
-							URL: 'SemesterFeeStructure',
-							page: <SemesterFeeStructure />,
+							URL: 'ProfileViewer',
+							page: <ProfileViewer />,
 						},
 						{
 							title: 'StudentsAttendance',
