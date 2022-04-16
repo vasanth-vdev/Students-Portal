@@ -9,127 +9,132 @@ import { MdOutlineLogout } from 'react-icons/md';
 import NavItem from '../components/DashboardNavItem';
 import { NavLink } from 'react-router-dom';
 import StudentDashboardMobile from './StudentDashboardMobile';
+import { useGoogleAuth } from '../Context/GoogleAuthContext';
 const StudentDashboard = ({ children }) => {
-	const [sideBar, setSideBar] = useState(false);
+  const [sideBar, setSideBar] = useState(false);
 
-	const sideBarHandle = () => setSideBar(!sideBar);
+  const sideBarHandle = () => setSideBar(!sideBar);
+  const { currentUser, googleSignOut } = useGoogleAuth();
 
-	return (
-		<>
-			<MediaQuery minWidth={900}>
-				<div className='StudentsDashboardPage'>
-					{StudentDashboardData.map((item, index) =>
-						sideBar ? (
-							<div
-								className='dashboardSidebar'
-								key={index}
-								style={{ width: '39rem' }}>
-								<div className='siderbarHeaderExpanded'>
-									<img
-										src={SideBarMenuIcon}
-										className='sidebarHeaderMenuIcon'
-										alt='menu'
-										onClick={sideBarHandle}
-									/>
-									<h1 className='sidebarHeaderTitle'>PSG PTC</h1>
-									<img
-										src={item.sidebar.logo}
-										alt='logo'
-										className='sidebarHeaderLogo'
-									/>
-								</div>
-								<div className='sidebarContent'>
-									{item.sidebar.navItems.map((item, index) => (
-										<NavItem
-											data={item}
-											key={index}
-											sideBarHandle={sideBarHandle}
-										/>
-									))}
-								</div>
-							</div>
-						) : (
-							<div className='dashboardSidebar' key={index}>
-								<div className='siderbarHeaderExpanded'>
-									<img
-										src={SideBarMenuIcon}
-										className='sidebarHeaderMenuIcon'
-										alt='menu'
-										onClick={sideBarHandle}
-										style={{ transform: 'rotatez(180deg)' }}
-									/>
-								</div>
+  const handleLogout = () => {
+    googleSignOut();
+  };
+  return (
+    <>
+      <MediaQuery minWidth={900}>
+        <div className='StudentsDashboardPage'>
+          {StudentDashboardData.map((item, index) =>
+            sideBar ? (
+              <div
+                className='dashboardSidebar'
+                key={index}
+                style={{ width: '39rem' }}>
+                <div className='siderbarHeaderExpanded'>
+                  <img
+                    src={SideBarMenuIcon}
+                    className='sidebarHeaderMenuIcon'
+                    alt='menu'
+                    onClick={sideBarHandle}
+                  />
+                  <h1 className='sidebarHeaderTitle'>PSG PTC</h1>
+                  <img
+                    src={item.sidebar.logo}
+                    alt='logo'
+                    className='sidebarHeaderLogo'
+                  />
+                </div>
+                <div className='sidebarContent'>
+                  {item.sidebar.navItems.map((item, index) => (
+                    <NavItem
+                      data={item}
+                      key={index}
+                      sideBarHandle={sideBarHandle}
+                    />
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div className='dashboardSidebar' key={index}>
+                <div className='siderbarHeaderExpanded'>
+                  <img
+                    src={SideBarMenuIcon}
+                    className='sidebarHeaderMenuIcon'
+                    alt='menu'
+                    onClick={sideBarHandle}
+                    style={{ transform: 'rotatez(180deg)' }}
+                  />
+                </div>
 
-								<div className='sidebarContentCollapsed'>
-									{item.sidebar.navItems.map((item, index) =>
-										item.subMenu.length === 0 ? (
-											<NavLink
-												className='navItemCollapsed'
-												to={`/${item.navURL}`}
-												key={index}>
-												<span className='navItemCollapsedIcon'>
-													{item.navIcon}
-												</span>
-											</NavLink>
-										) : (
-											<NavLink
-												className='navItemCollapsed'
-												to=''
-												onClick={sideBarHandle}
-												key={index}>
-												<span className='navItemCollapsedIcon'>
-													{item.navIcon}
-												</span>
-											</NavLink>
-										)
-									)}
-								</div>
-								<h1 className='sidebarHeaderTitleCollapsed'>PSG PTC</h1>
-							</div>
-						)
-					)}
+                <div className='sidebarContentCollapsed'>
+                  {item.sidebar.navItems.map((item, index) =>
+                    item.subMenu.length === 0 ? (
+                      <NavLink
+                        className='navItemCollapsed'
+                        to={`/${item.navURL}`}
+                        key={index}>
+                        <span className='navItemCollapsedIcon'>
+                          {item.navIcon}
+                        </span>
+                      </NavLink>
+                    ) : (
+                      <NavLink
+                        className='navItemCollapsed'
+                        to=''
+                        onClick={sideBarHandle}
+                        key={index}>
+                        <span className='navItemCollapsedIcon'>
+                          {item.navIcon}
+                        </span>
+                      </NavLink>
+                    )
+                  )}
+                </div>
+                <h1 className='sidebarHeaderTitleCollapsed'>PSG PTC</h1>
+              </div>
+            )
+          )}
 
-					<div
-						className='dasboardSection'
-						style={
-							sideBar
-								? { left: '35rem', width: 'calc(100vw - 35rem)' }
-								: { left: '10rem', width: 'calc(100vw - 10rem)' }
-						}>
-						{StudentDashboardData.map((item, index) => (
-							<div className='dashboardHeader' key={index}>
-								<div className='dashboardHeaderLeft'>
-									<img
-										className='dashboardHeaderUserAccount'
-										src={item.header.userImage}
-										alt='user'
-									/>
-									<h1 className='dashboardHeaderUsername'>
-										{item.header.userName}
-									</h1>
-								</div>
-								<div className='dashboardHeaderRight'>
-									<div className='userActionBtn notification'>
-										<MdOutlineNotificationsActive />
-									</div>
-									<div className='userActionBtn password'>
-										<MdOutlineFingerprint />
-									</div>
-									<NavLink className='userActionBtn logout' to='/Login'>
-										<MdOutlineLogout />
-									</NavLink>
-								</div>
-							</div>
-						))}
-						<div className='Content'>{children}</div>
-					</div>
-				</div>
-			</MediaQuery>
-			<MediaQuery maxWidth={900}>
-				<StudentDashboardMobile>{children}</StudentDashboardMobile>
-			</MediaQuery>
-		</>
-	);
+          <div
+            className='dasboardSection'
+            style={
+              sideBar
+                ? { left: '35rem', width: 'calc(100vw - 35rem)' }
+                : { left: '10rem', width: 'calc(100vw - 10rem)' }
+            }>
+            {StudentDashboardData.map((item, index) => (
+              <div className='dashboardHeader' key={index}>
+                <div className='dashboardHeaderLeft'>
+                  <img
+                    className='dashboardHeaderUserAccount'
+                    src={currentUser.photoURL}
+                    alt='user'
+                  />
+                  <h1 className='dashboardHeaderUsername'>
+                    {currentUser.displayName}
+                  </h1>
+                </div>
+                <div className='dashboardHeaderRight'>
+                  <div className='userActionBtn notification'>
+                    <MdOutlineNotificationsActive />
+                  </div>
+                  <div className='userActionBtn password'>
+                    <MdOutlineFingerprint />
+                  </div>
+                  <div className='userActionBtn logout' onClick={handleLogout}>
+                    <MdOutlineLogout />
+                  </div>
+                </div>
+              </div>
+            ))}
+            <div className='Content'>{children}</div>
+          </div>
+        </div>
+      </MediaQuery>
+      <MediaQuery maxWidth={900}>
+        <StudentDashboardMobile>{children}</StudentDashboardMobile>
+      </MediaQuery>
+    </>
+  );
 };
 
 export default StudentDashboard;
