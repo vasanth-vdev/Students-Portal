@@ -9,16 +9,13 @@ import { MdOutlineLogout } from 'react-icons/md';
 import NavItem from '../components/DashboardNavItem';
 import { NavLink } from 'react-router-dom';
 import StudentDashboardMobile from './StudentDashboardMobile';
-import { useGoogleAuth } from '../Context/GoogleAuthContext';
+import { useAuth } from '../Context/AuthContext';
 const StudentDashboard = ({ children }) => {
   const [sideBar, setSideBar] = useState(false);
 
   const sideBarHandle = () => setSideBar(!sideBar);
-  const { currentUser, googleSignOut } = useGoogleAuth();
+  const { currentUser, logOut } = useAuth();
 
-  const handleLogout = () => {
-    googleSignOut();
-  };
   return (
     <>
       <MediaQuery minWidth={900}>
@@ -120,7 +117,9 @@ const StudentDashboard = ({ children }) => {
                   <div className='userActionBtn password'>
                     <MdOutlineFingerprint />
                   </div>
-                  <div className='userActionBtn logout' onClick={handleLogout}>
+                  <div
+                    className='userActionBtn logout'
+                    onClick={() => logOut()}>
                     <MdOutlineLogout />
                   </div>
                 </div>

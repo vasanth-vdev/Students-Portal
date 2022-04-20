@@ -1,15 +1,12 @@
-import React from 'react';
+import { Field } from 'formik';
 import './css/LoginInput.css';
-const LoginInput = ({ inputName, type }) => {
-	return (
-		<div className='loginInputGroup'>
-			<p className='loginInputName'>{inputName}</p>
-			<input
-				className='loginInputField'
-				type={type === 'password' ? 'password' : 'text'}
-			/>
-		</div>
-	);
+const LoginInput = ({ inputName }, ...props) => {
+  return (
+    <div className='loginInputGroup'>
+      <p className='loginInputName'>{inputName}</p>
+      <Field className='loginInputField' {...props} />
+    </div>
+  );
 };
 
 export default LoginInput;

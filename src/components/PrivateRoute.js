@@ -1,7 +1,7 @@
 import { Navigate } from 'react-router-dom';
-import { useGoogleAuth } from '../Context/GoogleAuthContext';
+import { useAuth } from '../Context/AuthContext';
 
 export const PrivateRoute = ({ children }) => {
-  const { currentUser, googleSignOut } = useGoogleAuth();
-  return currentUser ? children : googleSignOut() && <Navigate to='/login' />;
+  const { currentUser, logOut } = useAuth();
+  return currentUser ? children : logOut() && <Navigate to='/login' />;
 };

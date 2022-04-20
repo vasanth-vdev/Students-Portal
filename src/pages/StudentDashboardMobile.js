@@ -5,13 +5,13 @@ import SideBarMenuCloseIcon from './../assets/images/icons/SidebarMenuClose.svg'
 import NavItem from '../components/DashboardNavItem';
 import StudentDashboardData from '../data/StudentDashboardData.js';
 import { MdOutlineLogout, MdOutlineNotificationsActive } from 'react-icons/md';
-import { useGoogleAuth } from '../Context/GoogleAuthContext';
+import { useAuth } from '../Context/AuthContext';
 
 const StudentDashboardMobile = ({ children }) => {
   const [mobileSidebar, setMobileSidebar] = useState(false);
   const sideBarHandle = () => setMobileSidebar(!mobileSidebar);
 
-  const { currentUser, googleSignOut } = useGoogleAuth();
+  const { currentUser, googleSignOut } = useAuth();
 
   const handleLogout = () => {
     googleSignOut();

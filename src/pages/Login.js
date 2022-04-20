@@ -1,17 +1,18 @@
 import React from 'react';
+import { Formik, Form, Field } from 'formik';
 import LoginData from './../data/LoginData.js';
 import LoginSwitchBtn from './../components/LoginSwitchBtn';
-import LoginInput from '../components/LoginInput.js';
-import { useGoogleAuth } from './../Context/GoogleAuthContext';
+import { useAuth } from '../Context/AuthContext';
 import { NavLink, Navigate } from 'react-router-dom';
 import './../assets/css/Login.css';
-
+import './../components/css/LoginInput.css';
 const Login = () => {
-  const { currentUser, googleSignIn, googleSignOut, loading } = useGoogleAuth();
+  const { currentUser, emailPasswordSignIn, error } = useAuth();
 
   return (
     <>
       {currentUser ? <Navigate to='/' /> : null}
+      {error ? alert(error) : null}
       <div className='loginPage'>
         {LoginData.map((item, index) => {
           return (
@@ -22,6 +23,7 @@ const Login = () => {
             </div>
           );
         })}
+
         <div className='loginContent'>
           <h1 className='loginContentTitle'>Login to Your Account</h1>
           <div className='loginSwitch'>
@@ -30,26 +32,31 @@ const Login = () => {
               text='STUDENT’S LOGIN'
               active={true}
             />
-            <LoginSwitchBtn
-              icon='teacher'
-              text='TEACHER’S LOGIN'
-              active={false}
-            />
           </div>
-          <form className='loginFormControlGroup'>
-            {currentUser ? (
-              <button onClick={googleSignOut} className='loginBtn'>
-                Sign Out
-              </button>
-            ) : (
-              <button
-                className='loginBtn'
-                onClick={googleSignIn}
-                disabled={loading && !currentUser ? true : false}>
-                Login with Google
-              </button>
+          <Formik
+            initialValues={{
+              email: '',
+              password: '',
+            }}
+            onSubmit={(values) => {
+              emailPasswordSignIn(values.email, values.password);
+            }}>
+            {() => (
+              <Form className='loginFormControlGroup' autoComplete='off'>
+                <div className='loginInputGroup'>
+                  <p className='loginInputName'>Email</p>
+                  <Field className='loginInputField' name='email' />
+                </div>
+                <div className='loginInputGroup'>
+                  <p className='loginInputName'>Password</p>
+                  <Field className='loginInputField' name='password' />
+                </div>
+                <button className='loginBtn' type='submit'>
+                  LOGIN
+                </button>
+              </Form>
             )}
-          </form>
+          </Formik>
         </div>
       </div>
     </>
