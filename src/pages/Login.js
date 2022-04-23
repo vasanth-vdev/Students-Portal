@@ -3,7 +3,7 @@ import { Formik, Form, Field } from 'formik';
 import LoginData from './../data/LoginData.js';
 import LoginSwitchBtn from './../components/LoginSwitchBtn';
 import { useAuth } from '../Context/AuthContext';
-import { NavLink, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import './../assets/css/Login.css';
 import './../components/css/LoginInput.css';
 const Login = () => {
@@ -39,7 +39,7 @@ const Login = () => {
               password: '',
             }}
             onSubmit={(values) => {
-              emailPasswordSignIn(values.email, values.password);
+              emailPasswordSignIn(values.email, values.password, );
             }}>
             {() => (
               <Form className='loginFormControlGroup' autoComplete='off'>

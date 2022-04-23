@@ -11,7 +11,7 @@ const StudentDashboardMobile = ({ children }) => {
   const [mobileSidebar, setMobileSidebar] = useState(false);
   const sideBarHandle = () => setMobileSidebar(!mobileSidebar);
 
-  const { currentUser, googleSignOut } = useAuth();
+  const {  userData, googleSignOut } = useAuth();
 
   const handleLogout = () => {
     googleSignOut();
@@ -36,12 +36,10 @@ const StudentDashboardMobile = ({ children }) => {
             <div className='dashboardSidebarUserAction'>
               <img
                 className='dashboardSidebarUserAccount'
-                src={currentUser.photoURL}
+                src={userData.photo}
                 alt='user'
               />
-              <h1 className='dashboardSidebarUsername'>
-                {currentUser.displayName}
-              </h1>
+              <h1 className='dashboardSidebarUsername'>{userData.name}</h1>
               <div className='userActionBtnMob notification'>
                 <MdOutlineNotificationsActive />
               </div>
