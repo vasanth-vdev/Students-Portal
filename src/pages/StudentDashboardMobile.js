@@ -9,7 +9,14 @@ import { useAuth } from '../Context/AuthContext';
 
 const StudentDashboardMobile = ({ children }) => {
   const [mobileSidebar, setMobileSidebar] = useState(false);
-  const backgrounds = ['royalBlue', 'olive', 'cyan'];
+  const backgrounds = [
+    'royalBlue',
+    'olive',
+    'blueVoilet',
+    'chocolate',
+    'crimson',
+    'orange',
+  ];
   const [background, setBackground] = useState(0);
   const sideBarHandle = () => setMobileSidebar(!mobileSidebar);
 

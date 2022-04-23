@@ -13,7 +13,14 @@ import { useAuth } from '../Context/AuthContext';
 
 const StudentDashboard = ({ children }) => {
   const [sideBar, setSideBar] = useState(false);
-  const backgrounds = ['royalBlue', 'olive', 'cyan'];
+  const backgrounds = [
+    'royalBlue',
+    'olive',
+    'blueVoilet',
+    'chocolate',
+    'crimson',
+    'orange',
+  ];
   const [background, setBackground] = useState(0);
   const sideBarHandle = () => setSideBar(!sideBar);
   const { userData, logOut } = useAuth();
