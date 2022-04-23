@@ -9,12 +9,6 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(
-    72.65deg,
-    rgba(0, 102, 255, 0.5) 0%,
-    rgba(0, 102, 255, 0.6) 0.01%,
-    #1e2db2 99.82%
-  );
 }
 .StudentsDashboardMobilePage::before {
   content: '';
@@ -81,7 +75,6 @@
   min-height: fit-content;
   width: var(--mobile-sidebar-width);
   box-shadow: 6px 0px 20px #00000040;
-  background: #9ab1de;
   backdrop-filter: blur(500px);
   display: flex;
   flex-direction: column;

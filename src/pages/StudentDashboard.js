@@ -12,8 +12,8 @@ import StudentDashboardMobile from './StudentDashboardMobile';
 import { useAuth } from '../Context/AuthContext';
 
 const StudentDashboard = ({ children }) => {
-  const backgrounds = ['royalBlue', 'olive', 'cyan'];
   const [sideBar, setSideBar] = useState(false);
+  const backgrounds = ['royalBlue', 'olive', 'cyan'];
   const [background, setBackground] = useState(0);
   const sideBarHandle = () => setSideBar(!sideBar);
   const { userData, logOut } = useAuth();

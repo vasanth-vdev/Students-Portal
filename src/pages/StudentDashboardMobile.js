@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './../assets/css/StudentDashboardMobile.css';
 import SideBarMenuIcon from './../assets/images/icons/SidebarMenu.svg';
 import SideBarMenuCloseIcon from './../assets/images/icons/SidebarMenuClose.svg';
@@ -9,21 +9,40 @@ import { useAuth } from '../Context/AuthContext';
 
 const StudentDashboardMobile = ({ children }) => {
   const [mobileSidebar, setMobileSidebar] = useState(false);
+  const backgrounds = ['royalBlue', 'olive', 'cyan'];
+  const [background, setBackground] = useState(0);
   const sideBarHandle = () => setMobileSidebar(!mobileSidebar);
 
-  const {  userData, googleSignOut } = useAuth();
+  const { userData, logOut } = useAuth();
 
-  const handleLogout = () => {
-    googleSignOut();
+  useEffect(() => {
+    if (localStorage.bgID) {
+      setBackground(parseInt(localStorage.getItem('bgID')));
+    }
+  }, []);
+
+  const changeBG = () => {
+    setBackground(backgrounds.length - 1 <= background ? 0 : background + 1);
+    localStorage.removeItem('bgID');
+    localStorage.setItem(
+      'bgID',
+      backgrounds.length - 1 <= background ? 0 : background + 1
+    );
   };
   return (
-    <div className='StudentsDashboardMobilePage'>
+    <div
+      className='StudentsDashboardMobilePage'
+      style={{ background: backgrounds[background] }}>
       <div className='dashboardSidebarContainerMobile'>
         {StudentDashboardData.map((item, index) => (
           <div
             className='dashboardSidebarMobile'
             key={index}
-            style={mobileSidebar ? { zIndex: 10 } : { zIndex: -100 }}>
+            style={
+              mobileSidebar
+                ? { zIndex: 10, background: backgrounds[background] }
+                : { zIndex: -100, background: backgrounds[background] }
+            }>
             <img
               onClick={sideBarHandle}
               src={SideBarMenuCloseIcon}
@@ -59,10 +78,16 @@ const StudentDashboardMobile = ({ children }) => {
             alt='menu'
             onClick={sideBarHandle}
           />
-          <div
-            className='userActionBtnMobile logoutMobile'
-            onClick={handleLogout}>
-            <MdOutlineLogout />
+          <div style={{ display: 'flex', gap: '2rem' }}>
+            <div
+              className='userActionBtnMobile'
+              style={{ background: backgrounds[background] }}
+              onClick={changeBG}></div>
+            <div
+              className='userActionBtnMobile logoutMobile'
+              onClick={() => logOut()}>
+              <MdOutlineLogout />
+            </div>
           </div>
         </div>
 
