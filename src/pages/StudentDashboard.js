@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './../assets/css/StudentDashboard.css';
 import MediaQuery from 'react-responsive';
 import SideBarMenuIcon from './../assets/images/icons/SidebarMenu.svg';
@@ -10,16 +10,34 @@ import NavItem from '../components/DashboardNavItem';
 import { NavLink } from 'react-router-dom';
 import StudentDashboardMobile from './StudentDashboardMobile';
 import { useAuth } from '../Context/AuthContext';
-const StudentDashboard = ({ children }) => {
-  const [sideBar, setSideBar] = useState(false);
 
+const StudentDashboard = ({ children }) => {
+  const backgrounds = ['royalBlue', 'olive', 'cyan'];
+  const [sideBar, setSideBar] = useState(false);
+  const [background, setBackground] = useState(0);
   const sideBarHandle = () => setSideBar(!sideBar);
   const { userData, logOut } = useAuth();
 
+  useEffect(() => {
+    if (localStorage.bgID) {
+      setBackground(parseInt(localStorage.getItem('bgID')));
+    }
+  }, []);
+
+  const changeBG = () => {
+    setBackground(backgrounds.length - 1 <= background ? 0 : background + 1);
+    localStorage.removeItem('bgID');
+    localStorage.setItem(
+      'bgID',
+      backgrounds.length - 1 <= background ? 0 : background + 1
+    );
+  };
   return (
     <>
       <MediaQuery minWidth={900}>
-        <div className='StudentsDashboardPage'>
+        <div
+          className='StudentsDashboardPage'
+          style={{ background: backgrounds[background] }}>
           {StudentDashboardData.map((item, index) =>
             sideBar ? (
               <div
@@ -109,6 +127,10 @@ const StudentDashboard = ({ children }) => {
                   <h1 className='dashboardHeaderUsername'>{userData.name}</h1>
                 </div>
                 <div className='dashboardHeaderRight'>
+                  <div
+                    className='userActionBtn'
+                    style={{ background: backgrounds[background] }}
+                    onClick={changeBG}></div>
                   <div className='userActionBtn notification'>
                     <MdOutlineNotificationsActive />
                   </div>

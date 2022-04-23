@@ -5,12 +5,6 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(
-    72.65deg,
-    rgba(0, 102, 255, 0.5) 0%,
-    rgba(0, 102, 255, 0.6) 0.01%,
-    #1e2db2 99.82%
-  );
 }
 
 .dashboardSidebar {
@@ -65,7 +59,7 @@
 }
 .dashboardHeaderRight {
   height: 6.5rem;
-  width: 22rem !important;
+  width: 26rem !important;
   box-shadow: 2px 2px 24px -2px rgba(0, 0, 0, 0.3);
   background: linear-gradient(
     92.29deg,
