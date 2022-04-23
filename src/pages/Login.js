@@ -39,7 +39,7 @@ const Login = () => {
               password: '',
             }}
             onSubmit={(values) => {
-              emailPasswordSignIn(values.email, values.password, );
+              emailPasswordSignIn(values.email, values.password);
             }}>
             {() => (
               <Form className='loginFormControlGroup' autoComplete='off'>
