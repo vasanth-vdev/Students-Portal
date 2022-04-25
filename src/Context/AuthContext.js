@@ -1,8 +1,8 @@
 import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { collection, getDocs, query, where } from 'firebase/firestore';
-import { auth, db } from '../Config/firebaseConfig';
+import { auth } from '../Config/firebaseConfig';
 import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Loader from '../components/Loader';
 
 const AuthContext = React.createContext();
 export const useAuth = () => {
@@ -14,8 +14,11 @@ const AuthenticationProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [userData, setUserData] = useState();
-
+  const [userData, setUserData] = useState(null);
+  const [pending, setpending] = useState(true);
+  const setData = async (data) => {
+    setUserData(data);
+  };
   const emailPasswordSignIn = async (email, password) => {
     try {
       setError('');
@@ -39,35 +42,30 @@ const AuthenticationProvider = ({ children }) => {
     setLoading(false);
   };
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(async (user) => {
-      if (user) {
-        const userDataRef = collection(db, 'students');
-        const q = query(userDataRef, where('email', '==', user.email));
-        const snapshot = await getDocs(q);
-        setUserData(
-          snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))[0]
-        );
-
+  useEffect(
+    () =>
+      auth.onAuthStateChanged((user) => {
         setCurrentUser(user);
-      } else {
-        setUserData(null);
-        setCurrentUser(user);
-      }
-    });
-
-    return unsubscribe;
-  }, []);
+        setpending(false);
+      }),
+    []
+  );
 
   const value = {
     currentUser,
     userData,
+    pending,
     emailPasswordSignIn,
     logOut,
     error,
     loading,
+    setData,
   };
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return pending ? (
+    <Loader text='Signing You In 🔐' />
+  ) : (
+    <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+  );
 };
 
 export default AuthenticationProvider;

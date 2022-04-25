@@ -10,6 +10,10 @@ import {
   MdColorLens,
 } from 'react-icons/md';
 import { useAuth } from '../Context/AuthContext';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { db } from '../Config/firebaseConfig';
+import { Navigate } from 'react-router-dom';
+import Loader from '../components/Loader';
 
 const StudentDashboardMobile = ({ children }) => {
   const [mobileSidebar, setMobileSidebar] = useState(false);
@@ -24,13 +28,21 @@ const StudentDashboardMobile = ({ children }) => {
   const [background, setBackground] = useState(0);
   const sideBarHandle = () => setMobileSidebar(!mobileSidebar);
 
-  const { userData, logOut } = useAuth();
+  const { currentUser, logOut, setData, userData } = useAuth();
 
   useEffect(() => {
+    if (!currentUser) return <Navigate to='/login' />;
+    getUserData();
     if (localStorage.bgID) {
       setBackground(parseInt(localStorage.getItem('bgID')));
     }
-  }, []);
+  }, [currentUser]);
+  const getUserData = async () => {
+    const userDataRef = collection(db, 'students');
+    const q = query(userDataRef, where('email', '==', currentUser.email));
+    const snapshot = await getDocs(q);
+    setData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))[0]);
+  };
 
   const changeBG = () => {
     setBackground(backgrounds.length - 1 <= background ? 0 : background + 1);
@@ -40,7 +52,9 @@ const StudentDashboardMobile = ({ children }) => {
       backgrounds.length - 1 <= background ? 0 : background + 1
     );
   };
-  return (
+  return !userData ? (
+    <Loader text='Getting Your Data ⌛️' />
+  ) : (
     <div
       className='StudentsDashboardMobilePage'
       style={{ background: backgrounds[background] }}>

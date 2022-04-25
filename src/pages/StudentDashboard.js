@@ -10,9 +10,12 @@ import {
   MdColorLens,
 } from 'react-icons/md';
 import NavItem from '../components/DashboardNavItem';
-import { NavLink } from 'react-router-dom';
+import { Navigate, NavLink } from 'react-router-dom';
 import StudentDashboardMobile from './StudentDashboardMobile';
 import { useAuth } from '../Context/AuthContext';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { db } from '../Config/firebaseConfig';
+import Loader from '../components/Loader';
 
 const StudentDashboard = ({ children }) => {
   const [sideBar, setSideBar] = useState(false);
@@ -26,13 +29,21 @@ const StudentDashboard = ({ children }) => {
   ];
   const [background, setBackground] = useState(0);
   const sideBarHandle = () => setSideBar(!sideBar);
-  const { userData, logOut } = useAuth();
+  const { currentUser, logOut, setData, userData } = useAuth();
 
   useEffect(() => {
+    if (!currentUser) return <Navigate to='/login' />;
+    getUserData();
     if (localStorage.bgID) {
       setBackground(parseInt(localStorage.getItem('bgID')));
     }
-  }, []);
+  }, [currentUser]);
+  const getUserData = async () => {
+    const userDataRef = collection(db, 'students');
+    const q = query(userDataRef, where('email', '==', currentUser.email));
+    const snapshot = await getDocs(q);
+    setData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))[0]);
+  };
 
   const changeBG = () => {
     setBackground(backgrounds.length - 1 <= background ? 0 : background + 1);
@@ -42,7 +53,10 @@ const StudentDashboard = ({ children }) => {
       backgrounds.length - 1 <= background ? 0 : background + 1
     );
   };
-  return (
+
+  return !userData ? (
+    <Loader text='Getting Your Data ⌛️' />
+  ) : (
     <>
       <MediaQuery minWidth={900}>
         <div
