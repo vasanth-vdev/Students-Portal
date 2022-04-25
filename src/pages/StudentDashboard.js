@@ -3,9 +3,12 @@ import './../assets/css/StudentDashboard.css';
 import MediaQuery from 'react-responsive';
 import SideBarMenuIcon from './../assets/images/icons/SidebarMenu.svg';
 import StudentDashboardData from '../data/StudentDashboardData.js';
-import { MdOutlineNotificationsActive } from 'react-icons/md';
-import { MdOutlineFingerprint } from 'react-icons/md';
-import { MdOutlineLogout } from 'react-icons/md';
+import {
+  MdOutlineNotificationsActive,
+  MdOutlineFingerprint,
+  MdOutlineLogout,
+  MdColorLens,
+} from 'react-icons/md';
 import NavItem from '../components/DashboardNavItem';
 import { NavLink } from 'react-router-dom';
 import StudentDashboardMobile from './StudentDashboardMobile';
@@ -136,8 +139,13 @@ const StudentDashboard = ({ children }) => {
                 <div className='dashboardHeaderRight'>
                   <div
                     className='userActionBtn'
-                    style={{ background: backgrounds[background] }}
-                    onClick={changeBG}></div>
+                    style={{
+                      background: backgrounds[background],
+                      color: 'white',
+                    }}
+                    onClick={changeBG}>
+                    <MdColorLens />
+                  </div>
                   <div className='userActionBtn notification'>
                     <MdOutlineNotificationsActive />
                   </div>

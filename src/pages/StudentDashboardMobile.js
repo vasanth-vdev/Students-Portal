@@ -4,7 +4,11 @@ import SideBarMenuIcon from './../assets/images/icons/SidebarMenu.svg';
 import SideBarMenuCloseIcon from './../assets/images/icons/SidebarMenuClose.svg';
 import NavItem from '../components/DashboardNavItem';
 import StudentDashboardData from '../data/StudentDashboardData.js';
-import { MdOutlineLogout, MdOutlineNotificationsActive } from 'react-icons/md';
+import {
+  MdOutlineLogout,
+  MdOutlineNotificationsActive,
+  MdColorLens,
+} from 'react-icons/md';
 import { useAuth } from '../Context/AuthContext';
 
 const StudentDashboardMobile = ({ children }) => {
@@ -88,8 +92,10 @@ const StudentDashboardMobile = ({ children }) => {
           <div style={{ display: 'flex', gap: '2rem' }}>
             <div
               className='userActionBtnMobile'
-              style={{ background: backgrounds[background] }}
-              onClick={changeBG}></div>
+              style={{ background: backgrounds[background], color: 'white' }}
+              onClick={changeBG}>
+              <MdColorLens />
+            </div>
             <div
               className='userActionBtnMobile logoutMobile'
               onClick={() => logOut()}>
