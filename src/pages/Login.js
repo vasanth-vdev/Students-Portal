@@ -7,7 +7,7 @@ import { Navigate } from 'react-router-dom';
 import './../assets/css/Login.css';
 import './../components/css/LoginInput.css';
 const Login = () => {
-  const { currentUser, emailPasswordSignIn, error } = useAuth();
+  const { currentUser, emailPasswordSignIn, error, loading } = useAuth();
 
   return (
     <>
@@ -45,13 +45,28 @@ const Login = () => {
               <Form className='loginFormControlGroup' autoComplete='off'>
                 <div className='loginInputGroup'>
                   <p className='loginInputName'>Email</p>
-                  <Field className='loginInputField' name='email' />
+                  <Field
+                    className='loginInputField'
+                    name='email'
+                    type='email'
+                    required
+                  />
                 </div>
                 <div className='loginInputGroup'>
                   <p className='loginInputName'>Password</p>
-                  <Field className='loginInputField' name='password' />
+                  <Field
+                    className='loginInputField'
+                    name='password'
+                    type='password'
+                    required
+                  />
                 </div>
-                <button className='loginBtn' type='submit'>
+                <button
+                  className={
+                    !loading ? 'loginBtn' : 'loginBtn loginBtnDisabled'
+                  }
+                  type='submit'
+                  disabled={loading}>
                   LOGIN
                 </button>
               </Form>

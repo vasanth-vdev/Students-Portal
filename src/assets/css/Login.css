@@ -70,3 +70,6 @@
 	letter-spacing: 0.07em;
 	color: #ffffff;
 }
+.loginBtnDisabled{
+	background-color: gray;
+}

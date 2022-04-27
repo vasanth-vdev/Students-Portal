@@ -28,6 +28,7 @@ const AuthenticationProvider = ({ children }) => {
     } catch {
       setError('Failed To SignIn');
     }
+    setLoading(false);
   };
   const logOut = async () => {
     try {
