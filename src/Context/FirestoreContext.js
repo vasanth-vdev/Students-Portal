@@ -1,16 +1,15 @@
-import { db } from '../Config/firebaseConfig';
-import React, { useContext, useState, useEffect } from 'react';
+import { db, storageBucket } from '../Config/firebaseConfig';
+import React, { useContext } from 'react';
 import {
   addDoc,
   collection,
   deleteDoc,
   doc,
-  getDoc,
   getDocs,
   query,
   updateDoc,
 } from 'firebase/firestore';
-import { async } from '@firebase/util';
+import { ref, uploadBytesResumable } from 'firebase/storage';
 
 const FirestoreContext = React.createContext();
 export const useFirestore = () => {
@@ -18,16 +17,35 @@ export const useFirestore = () => {
 };
 
 const FirestoreProvider = ({ children }) => {
+  const getDownloadURL = async (file, folder) => {
+    if (!file) return;
+    const uniqueID = Date.now() + Math.floor(Math.random()).toString();
+    const storageRef = ref(storageBucket, `/${folder}/${uniqueID}${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+    const refe = uploadTask.on(
+      'state_changed',
+      (snapshot) => {
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+      },
+      (err) => console.log(err),
+      () =>
+        getDownloadURL(uploadTask.snapshot.ref).then((url) => console.log(url))
+    );
+  };
+
   const getData = async (table, q) => {
     const dataRef = collection(db, table);
     try {
       if (q) {
         const qq = query(dataRef, q);
         const data = await getDocs(qq);
+        return data.docs.map((doc) => ({ ...doc.data(), uid: doc.id }));
       } else {
         const data = await getDocs(dataRef);
+        return data.docs.map((doc) => ({ ...doc.data(), uid: doc.id }));
       }
-      return data.docs.map((doc) => ({ ...doc.data(), uid: doc.id }));
     } catch {
       return `Failed to Get Data from ${table}`;
     }
@@ -60,7 +78,7 @@ const FirestoreProvider = ({ children }) => {
     }
   };
 
-  const value = {};
+  const value = { getData, addData, updateData, deleteData, getDownloadURL };
   return (
     <FirestoreContext.Provider value={value}>
       {children}
