@@ -9,7 +9,7 @@ import {
   query,
   updateDoc,
 } from 'firebase/firestore';
-import { ref, uploadBytesResumable } from 'firebase/storage';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const FirestoreContext = React.createContext();
 export const useFirestore = () => {
@@ -17,22 +17,13 @@ export const useFirestore = () => {
 };
 
 const FirestoreProvider = ({ children }) => {
-  const getDownloadURL = async (file, folder) => {
+  const getFileURL = async (file, folder) => {
     if (!file) return;
     const uniqueID = Date.now() + Math.floor(Math.random()).toString();
-    const storageRef = ref(storageBucket, `/${folder}/${uniqueID}${file.name}`);
-    const uploadTask = uploadBytesResumable(storageRef, file);
-    const refe = uploadTask.on(
-      'state_changed',
-      (snapshot) => {
-        const progress = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
-      },
-      (err) => console.log(err),
-      () =>
-        getDownloadURL(uploadTask.snapshot.ref).then((url) => console.log(url))
-    );
+    const fileRef = ref(storageBucket, `/${folder}/${uniqueID}${file.name}`);
+
+    await uploadBytes(fileRef, file);
+    return await getDownloadURL(fileRef);
   };
 
   const getData = async (table, q) => {
@@ -55,7 +46,7 @@ const FirestoreProvider = ({ children }) => {
     const dataRef = collection(db, table);
     try {
       await addDoc(dataRef, data);
-    } catch {
+    } catch (error) {
       return `Failed to Add Data to ${table}`;
     }
   };
@@ -78,7 +69,7 @@ const FirestoreProvider = ({ children }) => {
     }
   };
 
-  const value = { getData, addData, updateData, deleteData, getDownloadURL };
+  const value = { getData, addData, updateData, deleteData, getFileURL };
   return (
     <FirestoreContext.Provider value={value}>
       {children}
