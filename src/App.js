@@ -6,6 +6,8 @@ import StudentDashboard from './pages/StudentDashboard';
 import TodaySchedule from './pages/TodaySchedule';
 import StudentDashboardData from './data/StudentDashboardData';
 import { PrivateRoute } from './components/PrivateRoute';
+import ProfileViewer from './pages/Bio/ProfileViewer';
+import ChangePassword from './pages/Bio/ChangePassword';
 
 const App = () => {
   return (
@@ -46,6 +48,8 @@ const App = () => {
           )
         )}
         <Route path='/login' element={<Login />} />
+        <Route path='/ProfileView' element={<PrivateRoute><StudentDashboard><ProfileViewer /></StudentDashboard></PrivateRoute>} />
+        <Route path='/ChangePassword' element={<PrivateRoute><StudentDashboard><ChangePassword /></StudentDashboard></PrivateRoute>} />
       </Routes>
     </>
   );
