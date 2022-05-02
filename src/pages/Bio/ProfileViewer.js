@@ -1,9 +1,9 @@
 import React from 'react';
-import GlassSheet from '../components/GlassSheet';
-import StudentData from '../data/StudentData';
+import GlassSheet from '../../components/GlassSheet';
+import StudentData from '../../data/StudentData';
 import styled from 'styled-components';
-import PageHeader from '../components/PageHeader';
-import PageContent from '../components/PageContent';
+import PageHeader from '../../components/PageHeader';
+import PageContent from '../../components/PageContent';
 
 const Container = styled.div`
   height: auto;

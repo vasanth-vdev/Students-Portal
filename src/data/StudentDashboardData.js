@@ -2,18 +2,19 @@ import userImage from './../assets/images/UserAccount.png';
 import logo from './../assets/images/logos/Logo.png';
 import { MdOutlineDashboard } from 'react-icons/md';
 import { MdSchool } from 'react-icons/md';
-import { MdLuggage } from 'react-icons/md';
 import { SiMicrosoftacademic } from 'react-icons/si';
 import TestTimetable from '../pages/Examination/TestTimetable';
 import SeatingArrangement from '../pages/Examination/SeatingArrangement';
 import ExamTimeTable from '../pages/Examination/ExamTimeTable';
 import ExamResult from '../pages/Examination/ExamResult';
 import PostedLeavePrintout from '../pages/Academic/PostedLeavePrintout';
-//import SemesterFeeStructure from '../pages/Academic/SemesterFeeStructure';
-import ProfileViewer from '../pages/ProfileViewer';
+import SemesterFeeStructure from '../pages/Academic/SemesterFeeStructure';
+import ProfileUpdate from '../pages/Bio/ProfileUpdate';
+import ProjectsManagement from '../pages/Bio/ProjectsManagement';
+import CertificateManagement from '../pages/Bio/CertificateManagement';
 import StudentsAttendance from '../pages/Academic/StudentsAttendance';
 import CAMarks from '../pages/Academic/CAMarks';
-import Feedback from '../pages/Academic/Feedback';
+import {FaUserAlt} from 'react-icons/fa'
 // import { BiSitemap } from 'react-icons/bi';
 
 const StudentDashboardData = [
@@ -42,12 +43,12 @@ const StudentDashboardData = [
 							page: <PostedLeavePrintout />,
 						},
 						{
-							title: 'Semester Fee Structure',
-							URL: 'ProfileViewer',
-							page: <ProfileViewer />,
+							title: 'Semester Fee',
+							URL: 'SemesterFeeStructure',
+							page: <SemesterFeeStructure />,
 						},
 						{
-							title: 'StudentsAttendance',
+							title: 'Attendance',
 							URL: 'StudentsAttendance',
 							page: <StudentsAttendance />,
 						},
@@ -55,11 +56,6 @@ const StudentDashboardData = [
 							title: 'CA Marks',
 							URL: 'CAMarks',
 							page: <CAMarks />,
-						},
-						{
-							title: 'Feedback',
-							URL: 'Feedback',
-							page: <Feedback />,
 						},
 					],
 				},
@@ -90,10 +86,25 @@ const StudentDashboardData = [
 					],
 				},
 				{
-					navTitle: 'Hostel',
-					navIcon: <MdLuggage />,
-					navURL: '/Hostel',
-					subMenu: [],
+					navTitle: 'Bio',
+					navIcon: <FaUserAlt size='2.5rem'/>,
+					subMenu: [
+						{
+							title: 'Update Profile',
+							URL: 'UpdateBio',
+							page: <ProfileUpdate />,
+						},
+						{
+							title: 'Manage Projects',
+							URL: 'ProjectManagement',
+							page: <ProjectsManagement />,
+						},
+						{
+							title: 'Manage Certificates',
+							URL: 'CertificateManagement',
+							page: <CertificateManagement />,
+						},
+					],
 				},
 			],
 		},
