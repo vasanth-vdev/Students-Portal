@@ -4,6 +4,7 @@ import StudentData from '../../data/StudentData';
 import styled from 'styled-components';
 import PageHeader from '../../components/PageHeader';
 import PageContent from '../../components/PageContent';
+import CertificateCase from '../../components/CertificateCase';
 
 const Container = styled.div`
   height: auto;
@@ -151,33 +152,11 @@ const ProfileViewer = () => {
               </GlassSheet>
               <div>
                 <ContentHeader>Club Activities</ContentHeader>
-                <Associations>
-                  <ClubActivities>
-                    <NameOfTheClub>NCC</NameOfTheClub>
-                    <Position>Cadet Under Officer</Position>
-                  </ClubActivities>
-                  <ClubActivities>
-                    <NameOfTheClub>NSS</NameOfTheClub>
-                    <Position>Volunteer</Position>
-                  </ClubActivities>
-                  <ClubActivities>
-                    <NameOfTheClub>Sports</NameOfTheClub>
-                    <Position>FootBall</Position>
-                  </ClubActivities>
-                </Associations>
+<CertificateCase subheader="C Certificate"/>
               </div>
               <div>
                 <ContentHeader>Extra - Curricular</ContentHeader>
-                <Associations>
-                  <ClubActivities>
-                    <NameOfTheClub>Paper Presenatation</NameOfTheClub>
-                    <Position>In Sri Eshwar College of Technology</Position>
-                  </ClubActivities>
-                  <ClubActivities>
-                    <NameOfTheClub>National Quiz</NameOfTheClub>
-                    <Position>In Ramakrisha Polytechnic College</Position>
-                  </ClubActivities>
-                </Associations>
+<CertificateCase subheader="C Certificate"/>
               </div>
             </Container>
           );
