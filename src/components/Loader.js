@@ -1,6 +1,5 @@
 import './css/Loader.css';
-const Loader = ({ text,signOut }) => {
-
+const Loader = ({ text, signOut }) => {
   return (
     <div className='Loader'>
       <div className='spinnerPairHolder'>
@@ -26,7 +25,7 @@ const Loader = ({ text,signOut }) => {
         </div>
       </div>
       <h1 className='loadingText'>{text}</h1>
-      <button onClick={signOut()}>Logout</button>
+      <button onClick={signOut}>Logout</button>
     </div>
   );
 };
