@@ -63,7 +63,7 @@ const AuthenticationProvider = ({ children }) => {
     setData,
   };
   return pending ? (
-    <Loader text='Signing You In 🔐' />
+    <Loader text='Signing You In 🔐' signOut={logOut} />
   ) : (
     <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
   );
