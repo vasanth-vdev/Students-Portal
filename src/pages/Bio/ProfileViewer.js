@@ -4,11 +4,8 @@ import StudentData from '../../data/StudentData';
 import styled from 'styled-components';
 import PageHeader from '../../components/PageHeader';
 import PageContent from '../../components/PageContent';
-<<<<<<< HEAD
 import CertificateCase from '../../components/CertificateCase';
-=======
-import Certificate from '../../assets/images/backgrounds/Certificate.jpeg';
->>>>>>> fd9a89802c22c6d27d01faa5f0339f2e03b5602b
+import Certificate from './../../assets/images/Student.jpg';
 
 const Container = styled.div`
   height: auto;
@@ -63,40 +60,15 @@ const StaffDetailsContent = styled.div`
   font-size: 1.8rem;
   letter-spacing: 0.07em;
 `;
-const Associations = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
-const ClubActivities = styled.div`
-  height: auto;
-  width: 30rem;
-  background: #ffffff;
-  border-radius: 20px;
-  border: 1px solid #ffffff;
-  margin: 1rem 2rem;
-`;
-const NameOfTheClub = styled.h1`
-  font-size: 2rem;
-  font-weight: bold;
-  letter-spacing: 0.07em;
-  color: #595959;
-  margin: 0.5rem 0rem 0rem 1rem;
-`;
-const Cert = styled.img`
-  height: 6rem;
-  width: 4rem;
-`;
-const Position = styled.h2`
-  font-size: 1.6rem;
-  font-weight: 500;
-  letter-spacing: 0.07em;
-  margin: 0.5rem 0rem 0rem 1rem;
-`;
 const ContentHeader = styled.h1`
   font-size: 2.5rem;
   font-weight: 600;
   letter-spacing: 0.07em;
   margin: 5rem 0rem 3rem 0rem;
+`;
+const CertificateViewer = styled.div`
+display: flex;
+flex-wrap: wrap;
 `;
 
 const ProfileViewer = () => {
@@ -163,31 +135,37 @@ const ProfileViewer = () => {
                 </DetailsContainer>
               </GlassSheet>
               <div>
-<<<<<<< HEAD
-                <ContentHeader>Club Activities</ContentHeader>
-<CertificateCase subheader="C Certificate"/>
-=======
                 <ContentHeader>Co - Curricular</ContentHeader>
-                <Associations>
-                  <ClubActivities>
-                    <Position>Cadet Under Officer</Position>
-                  </ClubActivities>
-                  <ClubActivities>
-                    <GlassSheet height='auto' width='auto' borderRadius='2rem'>
-                      <Cert src={Certificate} alt='' />
-                    </GlassSheet>
-                    <Position>Volunteer</Position>
-                  </ClubActivities>
-                  <ClubActivities>
-                    <NameOfTheClub>Sports</NameOfTheClub>
-                    <Position>FootBall</Position>
-                  </ClubActivities>
-                </Associations>
->>>>>>> fd9a89802c22c6d27d01faa5f0339f2e03b5602b
+<CertificateViewer>
+<CertificateCase subheader="C Certificate" Certificate={Certificate}/>
+<CertificateCase subheader="C Certificate" Certificate={Certificate}/>
+<CertificateCase subheader="bvhbrehwruuoughwyefyugrfgywrhuiwtutjwuigt" Certificate={Certificate}/>
+<CertificateCase subheader="bvhbrehwruuoughwyefyugrfgywrhuiwtutjwuigt" Certificate={Certificate}/>
+<CertificateCase subheader="C Certificate" Certificate={Certificate}/>
+<CertificateCase subheader="C Certificate" Certificate={Certificate}/>
+<CertificateCase subheader="bvhbrehwruuoughwyefyugrfgywrhuiwtutjwuigt" Certificate={Certificate}/>
+</CertificateViewer>
               </div>
               <div>
                 <ContentHeader>Extra - Curricular</ContentHeader>
-<CertificateCase subheader="C Certificate"/>
+<CertificateViewer>
+<CertificateCase subheader="bvhbrehwruuoughwyefyugrfgywrhuiwtutjwuigt" Certificate={Certificate}/>
+<CertificateCase subheader="C Certificate" Certificate={Certificate}/>
+<CertificateCase subheader="C Certificate" Certificate={Certificate}/>
+<CertificateCase subheader="bvhbrehwruuoughwyefyugrfgywrhuiwtutjwuigt" Certificate={Certificate}/>
+<CertificateCase subheader="C Certificate" Certificate={Certificate}/>
+<CertificateCase subheader="bvhbrehwruuoughwyefyugrfgywrhuiwtutjwuigt" Certificate={Certificate}/>
+</CertificateViewer>
+              </div>
+ <div>
+                <ContentHeader>Projects</ContentHeader>
+<CertificateViewer>
+<CertificateCase subheader="bvhbrehwruuoughwyefyugrfgywrhuiwtutjwuigt" Certificate={Certificate}/>
+<CertificateCase subheader="C Certificate" Certificate={Certificate}/>
+<CertificateCase subheader="bvhbrehwruuoughwyefyugrfgywrhuiwtutjwuigt" Certificate={Certificate}/>
+<CertificateCase subheader="C Certificate" Certificate={Certificate}/>
+<CertificateCase subheader="bvhbrehwruuoughwyefyugrfgywrhuiwtutjwuigt" Certificate={Certificate}/>
+</CertificateViewer>
               </div>
             </Container>
           );

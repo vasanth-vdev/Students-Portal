@@ -1,0 +1,31 @@
+.CertificateContainer {
+justify-content: center;
+margin: 1rem 3.2rem;
+}
+.MainContainer {
+width: 26rem;
+height: 23rem;
+background-color: rgba(212, 255, 255, 1.0);
+border-radius: 2rem 2rem 0rem 0rem;
+border: 6px solid rgb(255, 255, 255);
+border-radius: 2rem 2rem 0rem 0rem;
+}
+.CertImage {
+object-fit:cover;
+height: 22rem;
+width: 25rem;
+}
+.SubHeaderContainer {
+height: 6.5rem;
+width: 26rem;
+border-radius: 0rem 0rem 2rem 2rem;
+padding: 1.5rem;
+background-color: #ffffff;
+box-shadow: 0px 4px 20px -4px rgba(0, 0, 0, 0.3);
+word-wrap: break-word;
+}
+.SubHeader {
+text-align: center;
+font-size: 1.4rem;
+letter-spacing: 0.04em;
+}

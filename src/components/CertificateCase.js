@@ -1,14 +1,15 @@
 import React from 'react'
+import './css/CertificateCase.css';
 
 const CertificateCase = props => {
   return (
 <div>
-<div>
-<div>
-<img alt='Certificate'/>
+<div className='CertificateContainer'>
+<div className='MainContainer'>
+<img className='CertImage' src={props.Certificate} alt='Certificate'/>
 </div>
-<div>
-<h2>{props.subheader}</h2>
+<div className='SubHeaderContainer'>
+<h2 className='SubHeader'>{props.subheader}</h2>
 </div>
 </div>
 </div>
