@@ -1,19 +1,23 @@
-import React from 'react'
+import React from 'react';
 import './css/CertificateCase.css';
 
-const CertificateCase = props => {
+const CertificateCase = (props) => {
   return (
-<div>
-<div className='CertificateContainer'>
-<div className='MainContainer'>
-<img className='CertImage' src={props.Certificate} alt='Certificate'/>
-</div>
-<div className='SubHeaderContainer'>
-<h2 className='SubHeader'>{props.subheader}</h2>
-</div>
-</div>
-</div>
-  )
-}
+    <div>
+      <a href={props.Link}>
+        <div className='MainContainer'>
+          <img
+            className='CertImage'
+            src={props.Certificate}
+            alt='Certificate'
+          />
+        </div>
+        <div className='SubHeaderContainer'>
+          <h2 className='SubHeader'>{props.subheader}</h2>
+        </div>
+      </a>
+    </div>
+  );
+};
 
-export default CertificateCase
+export default CertificateCase;

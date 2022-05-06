@@ -1,11 +1,13 @@
 import React from 'react';
 import GlassSheet from '../../components/GlassSheet';
-import StudentData from '../../data/StudentData';
+//import StudentData from '../../data/StudentData';
 import styled from 'styled-components';
 import PageHeader from '../../components/PageHeader';
 import PageContent from '../../components/PageContent';
 import CertificateCase from '../../components/CertificateCase';
 import Certificate from './../../assets/images/Student.jpg';
+import '../../components/css/ProfileViewer.css';
+import { useAuth } from './../../Context/AuthContext';
 
 const Container = styled.div`
   height: auto;
@@ -67,109 +69,122 @@ const ContentHeader = styled.h1`
   margin: 5rem 0rem 3rem 0rem;
 `;
 const CertificateViewer = styled.div`
-display: flex;
-flex-wrap: wrap;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+`;
+const CertificateHeader = styled.div`
+  margin: 8rem 0rem 4rem 0rem;
 `;
 
 const ProfileViewer = () => {
+  const { userData } = useAuth();
   return (
     <div>
       <PageHeader text='About Me' />
+      {console.log(userData)}
       <PageContent>
-        {StudentData.DX1918.map((item, index) => {
-          return (
-            <Container key={index}>
-              <StaffImage src={item.img} alt='staff' />
-              <GlassSheet
-                height='auto'
-                width='auto'
-                borderRadius='2rem'
-                margin='12rem 0rem 0rem 0rem'>
-                <StaffName>{item.name}</StaffName>
-                <DetailsContainer>
-                  <StaffDetails>
-                    <StaffDetailHeader>Roll No:</StaffDetailHeader>
-                    <StaffDetailsContent>{item.rollno}</StaffDetailsContent>
-                  </StaffDetails>
+        <Container>
+          <StaffImage src={userData.photo} alt='staff' />
+          <GlassSheet
+            height='auto'
+            width='auto'
+            borderRadius='2rem'
+            margin='12rem 0rem 0rem 0rem'>
+            <StaffName>{userData.name}</StaffName>
+            <DetailsContainer className='DetailsContainer'>
+              <StaffDetails className='StaffDetails'>
+                <StaffDetailHeader>Roll No:</StaffDetailHeader>
+                <StaffDetailsContent>{userData.rollno}</StaffDetailsContent>
+              </StaffDetails>
 
-                  <StaffDetails>
-                    <StaffDetailHeader>Department:</StaffDetailHeader>
-                    <StaffDetailsContent>{item.department}</StaffDetailsContent>
-                  </StaffDetails>
+              <StaffDetails>
+                <StaffDetailHeader className='StaffDetailHeader'>
+                  Department:
+                </StaffDetailHeader>
+                <StaffDetailsContent className='StaffDetailsContent'>
+                  {userData.department}
+                </StaffDetailsContent>
+              </StaffDetails>
 
-                  <StaffDetails>
-                    <StaffDetailHeader>Batch:</StaffDetailHeader>
-                    <StaffDetailsContent>{item.batch}</StaffDetailsContent>
-                  </StaffDetails>
+              <StaffDetails>
+                <StaffDetailHeader>Batch:</StaffDetailHeader>
+                <StaffDetailsContent>{userData.batch}</StaffDetailsContent>
+              </StaffDetails>
 
-                  <StaffDetails>
-                    <StaffDetailHeader>
-                      Programme Coordinator:
-                    </StaffDetailHeader>
-                    <StaffDetailsContent>
-                      {item.programmecoordinator}
-                    </StaffDetailsContent>
-                  </StaffDetails>
+              <StaffDetails>
+                <StaffDetailHeader>Programme Coordinator:</StaffDetailHeader>
+                <StaffDetailsContent>
+                  {userData.programeCoordinator}
+                </StaffDetailsContent>
+              </StaffDetails>
 
-                  <StaffDetails>
-                    <StaffDetailHeader>E-Mail:</StaffDetailHeader>
-                    <StaffDetailsContent> {item.email}</StaffDetailsContent>
-                  </StaffDetails>
+              <StaffDetails>
+                <StaffDetailHeader>E-Mail:</StaffDetailHeader>
+                <StaffDetailsContent> {userData.email}</StaffDetailsContent>
+              </StaffDetails>
 
-                  <StaffDetails>
-                    <StaffDetailHeader>Phone Number:</StaffDetailHeader>
-                    <StaffDetailsContent> {item.phoneno}</StaffDetailsContent>
-                  </StaffDetails>
+              <StaffDetails>
+                <StaffDetailHeader>Phone Number:</StaffDetailHeader>
+                <StaffDetailsContent>
+                  {' '}
+                  {userData.phoneNumber}
+                </StaffDetailsContent>
+              </StaffDetails>
 
-                  <StaffDetails>
-                    <StaffDetailHeader>Date of Birth:</StaffDetailHeader>
-                    <StaffDetailsContent>
-                      {item.dateofbirth}
-                    </StaffDetailsContent>
-                  </StaffDetails>
+              <StaffDetails>
+                <StaffDetailHeader>Date of Birth:</StaffDetailHeader>
+                <StaffDetailsContent>{userData.dob}</StaffDetailsContent>
+              </StaffDetails>
 
-                  <StaffDetails>
-                    <StaffDetailHeader>Address:</StaffDetailHeader>
-                    <StaffDetailsContent>{item.address}</StaffDetailsContent>
-                  </StaffDetails>
-                </DetailsContainer>
-              </GlassSheet>
-              <div>
-                <ContentHeader>Co - Curricular</ContentHeader>
-<CertificateViewer>
-<CertificateCase subheader="C Certificate" Certificate={Certificate}/>
-<CertificateCase subheader="C Certificate" Certificate={Certificate}/>
-<CertificateCase subheader="bvhbrehwruuoughwyefyugrfgywrhuiwtutjwuigt" Certificate={Certificate}/>
-<CertificateCase subheader="bvhbrehwruuoughwyefyugrfgywrhuiwtutjwuigt" Certificate={Certificate}/>
-<CertificateCase subheader="C Certificate" Certificate={Certificate}/>
-<CertificateCase subheader="C Certificate" Certificate={Certificate}/>
-<CertificateCase subheader="bvhbrehwruuoughwyefyugrfgywrhuiwtutjwuigt" Certificate={Certificate}/>
-</CertificateViewer>
-              </div>
-              <div>
-                <ContentHeader>Extra - Curricular</ContentHeader>
-<CertificateViewer>
-<CertificateCase subheader="bvhbrehwruuoughwyefyugrfgywrhuiwtutjwuigt" Certificate={Certificate}/>
-<CertificateCase subheader="C Certificate" Certificate={Certificate}/>
-<CertificateCase subheader="C Certificate" Certificate={Certificate}/>
-<CertificateCase subheader="bvhbrehwruuoughwyefyugrfgywrhuiwtutjwuigt" Certificate={Certificate}/>
-<CertificateCase subheader="C Certificate" Certificate={Certificate}/>
-<CertificateCase subheader="bvhbrehwruuoughwyefyugrfgywrhuiwtutjwuigt" Certificate={Certificate}/>
-</CertificateViewer>
-              </div>
- <div>
-                <ContentHeader>Projects</ContentHeader>
-<CertificateViewer>
-<CertificateCase subheader="bvhbrehwruuoughwyefyugrfgywrhuiwtutjwuigt" Certificate={Certificate}/>
-<CertificateCase subheader="C Certificate" Certificate={Certificate}/>
-<CertificateCase subheader="bvhbrehwruuoughwyefyugrfgywrhuiwtutjwuigt" Certificate={Certificate}/>
-<CertificateCase subheader="C Certificate" Certificate={Certificate}/>
-<CertificateCase subheader="bvhbrehwruuoughwyefyugrfgywrhuiwtutjwuigt" Certificate={Certificate}/>
-</CertificateViewer>
-              </div>
-            </Container>
-          );
-        })}
+              <StaffDetails>
+                <StaffDetailHeader>Address:</StaffDetailHeader>
+                <StaffDetailsContent>{userData.address}</StaffDetailsContent>
+              </StaffDetails>
+            </DetailsContainer>
+          </GlassSheet>
+          <CertificateHeader>
+            <PageHeader text='PSG Polytechnic College' />
+          </CertificateHeader>
+          <div>
+            <ContentHeader>Curricular</ContentHeader>
+            <CertificateViewer>
+              <CertificateCase
+                subheader='C Certificate'
+                Certificate={Certificate}
+              />
+            </CertificateViewer>
+          </div>
+          <div>
+            <ContentHeader>Co - Curricular</ContentHeader>
+            <CertificateViewer>
+              <CertificateCase
+                subheader='C Certificate'
+                Certificate={Certificate}
+              />
+            </CertificateViewer>
+          </div>
+          <div>
+            <ContentHeader>Extra - Curricular</ContentHeader>
+            <CertificateViewer>
+              <CertificateCase
+                Link='huvbebuvtrgrtghueghrty'
+                subheader='bvhbrehwruuoughwyefyugrfgywrhuiwtutjwuigt'
+                Certificate={Certificate}
+              />
+            </CertificateViewer>
+          </div>
+          <div>
+            <ContentHeader>Projects</ContentHeader>
+            <CertificateViewer>
+              <CertificateCase
+                subheader='bvhbrehwruuoughwyefyugrfgywrhuiwtutjwuigt'
+                Certificate={Certificate}
+              />
+            </CertificateViewer>
+          </div>
+        </Container>
       </PageContent>
     </div>
   );
