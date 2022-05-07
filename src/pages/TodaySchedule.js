@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PageHeader from '../components/PageHeader';
 import PageContent from '../components/PageContent';
-  import TodayScheduleItem from '../components/TodayScheduleItem';
+import TodayScheduleItem from '../components/TodayScheduleItem';
 import { useFirestore } from './../Context/FirestoreContext';
 import { useAuth } from './../Context/AuthContext';
 import './../assets/css/todaySchedule.css';
@@ -19,7 +19,11 @@ const TodaySchedule = () => {
         where('batch', '==', userData.batch) &&
           where('department', '==', userData.department)
       );
-      setTodaySchedule(data[0].timeTable);
+      setTodaySchedule(
+        data[0].timeTable.filter((item) =>
+          parseInt(item.weekDay) === day ? item : null
+        )
+      );
     })();
   }, []);
   return (
@@ -27,10 +31,14 @@ const TodaySchedule = () => {
       <PageHeader text={`Today's Schedule`} />
       <PageContent>
         <div className='todayScheduleList'>
-          {todaySchedule.map((item, index) =>
-            parseInt(item.weekDay) === day ? (
-              <TodayScheduleItem data={item} key={index} />
-            ) : null
+          {todaySchedule.length !== 0 ? (
+            todaySchedule.map((item, index) =>
+              parseInt(item.weekDay) === day ? (
+                <TodayScheduleItem data={item} key={index} />
+              ) : null
+            )
+          ) : (
+            <h1 className='noClassMsg'>No Classes Scheduled Today</h1>
           )}
         </div>
       </PageContent>
