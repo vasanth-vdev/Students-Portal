@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PageHeader from '../components/PageHeader';
 import PageContent from '../components/PageContent';
-import TodayScheduleData from '../data/TodayScheduleData';
-import TodayScheduleItem from '../components/TodayScheduleItem';
+  import TodayScheduleItem from '../components/TodayScheduleItem';
 import { useFirestore } from './../Context/FirestoreContext';
 import { useAuth } from './../Context/AuthContext';
 import './../assets/css/todaySchedule.css';

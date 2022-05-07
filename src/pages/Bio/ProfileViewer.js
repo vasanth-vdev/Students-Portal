@@ -1,6 +1,5 @@
 import React from 'react';
 import GlassSheet from '../../components/GlassSheet';
-//import StudentData from '../../data/StudentData';
 import styled from 'styled-components';
 import PageHeader from '../../components/PageHeader';
 import PageContent from '../../components/PageContent';
@@ -27,6 +26,14 @@ const StaffImage = styled.img`
   box-shadow: 4px 4px 24px -4px rgba(0, 0, 0, 0.3);
   object-fit: cover;
   z-index: 1;
+
+  @media screen and (max-width: 450px) {
+    & {
+      top: 20%;
+      height: 15rem;
+      width: 15rem;
+    }
+  }
 `;
 
 const StaffName = styled.h1`
@@ -38,7 +45,7 @@ const StaffName = styled.h1`
 `;
 
 const DetailsContainer = styled.div`
-  padding: 5rem 0;
+  padding: 5rem 2.5rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -48,6 +55,7 @@ const DetailsContainer = styled.div`
 `;
 const StaffDetails = styled.div`
   display: flex;
+  flex-wrap: wrap;
 `;
 const StaffDetailHeader = styled.div`
   height: auto;
@@ -61,6 +69,7 @@ const StaffDetailsContent = styled.div`
   width: 28rem;
   font-size: 1.8rem;
   letter-spacing: 0.07em;
+  margin: 1rem 0;
 `;
 const ContentHeader = styled.h1`
   font-size: 2.5rem;
@@ -83,7 +92,6 @@ const ProfileViewer = () => {
   return (
     <div>
       <PageHeader text='About Me' />
-      {console.log(userData)}
       <PageContent>
         <Container>
           <StaffImage src={userData.photo} alt='staff' />

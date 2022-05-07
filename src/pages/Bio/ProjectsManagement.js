@@ -2,7 +2,7 @@ import React from 'react';
 import PageHeader from '../../components/PageHeader';
 import PageContent from '../../components/PageContent';
 import GlassSheet from '../../components/GlassSheet';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
 import styled from 'styled-components';
 import GreenButton from '../../components/GreenButton';
 
