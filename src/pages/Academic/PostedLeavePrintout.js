@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PageHeader from '../../components/PageHeader';
 import PageContent from '../../components/PageContent';
-
+import LeaveStatusShell from '../../components/LeaveStatusShell';
 import GreenButton from './../../components/GreenButton';
 import { Field, Form, Formik } from 'formik';
 import './../../assets/css/PostedLeavePrintout.css';
@@ -98,12 +98,7 @@ const PostedLeavePrintout = () => {
         </div>
         <div>
           <h1 style={{ fontSize: '2.5rem' }}>Leave Status</h1>
-          {leaveData &&
-            leaveData.map((item, index) => (
-              <div key={index}>
-                <h1 style={{ fontSize: '2rem' }}>{JSON.stringify(item)}</h1>
-              </div>
-            ))}
+          <LeaveStatusShell/>
         </div>
       </PageContent>
     </div>
