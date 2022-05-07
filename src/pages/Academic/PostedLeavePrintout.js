@@ -97,8 +97,25 @@ const PostedLeavePrintout = () => {
           </Formik>
         </div>
         <div>
-          <h1 style={{ fontSize: '2.5rem' }}>Leave Status</h1>
-          <LeaveStatusShell/>
+          <h1 style={{ fontSize: '2.5rem', margin: '3rem 0rem' }}>
+            Leave Status
+          </h1>
+          <div className='StatusContainer'>
+            {console.log(leaveData)}
+            {leaveData.map((item, index) => (
+              <LeaveStatusShell
+              key={index}
+                Name={userData.name}
+                Rollno={item.rollNo}
+                document={item.document}
+                Filename='Attachement'
+                From={item.fromDate}
+                To={item.toDate}
+                Days='5'
+                Status={item.status}
+              />
+            ))}
+          </div>
         </div>
       </PageContent>
     </div>
