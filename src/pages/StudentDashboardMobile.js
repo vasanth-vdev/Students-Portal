@@ -83,7 +83,7 @@ const StudentDashboardMobile = ({ children }) => {
                 src={userData.photo}
                 alt='user'
               />
-              <h1 className='dashboardSidebarUsername'>{userData.name}</h1>
+              <h1 className='dashboardSidebarUsername'>{`${userData.name} - ${userData.rollno}`}</h1>
               <div className='userActionBtnMob notification'>
                 <MdOutlineNotificationsActive />
               </div>

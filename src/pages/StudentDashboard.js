@@ -142,14 +142,14 @@ const StudentDashboard = ({ children }) => {
             }>
             {StudentDashboardData.map((item, index) => (
               <div className='dashboardHeader' key={index}>
-                <Link to='/ProfileView'>           
+                <Link to='/ProfileView'>
                   <div className='dashboardHeaderLeft'>
                     <img
                       className='dashboardHeaderUserAccount'
                       src={userData.photo}
                       alt='user'
                     />
-                    <h1 className='dashboardHeaderUsername'>{userData.name}</h1>
+                    <h1 className='dashboardHeaderUsername'>{`${userData.name} - ${userData.rollno}`}</h1>
                   </div>
                 </Link>
                 <div className='dashboardHeaderRight'>
