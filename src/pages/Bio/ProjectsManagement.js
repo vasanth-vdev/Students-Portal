@@ -107,11 +107,11 @@ const ProjectsManagement = () => {
             )}
           </Formik>
         </GlassSheet>
-        <div>
-          <ContentHeader>Projects</ContentHeader>
-          <CertificateViewer>
-            {studentProjects &&
-              studentProjects.map((item, index) => (
+        {studentProjects && (
+          <div>
+            <ContentHeader>Projects</ContentHeader>
+            <CertificateViewer>
+              {studentProjects.map((item, index) => (
                 <CertificateCase
                   key={index}
                   title={item.projectName}
@@ -122,8 +122,9 @@ const ProjectsManagement = () => {
                   getProjects={getProjects}
                 />
               ))}
-          </CertificateViewer>
-        </div>
+            </CertificateViewer>
+          </div>
+        )}
       </PageContent>
     </div>
   );
