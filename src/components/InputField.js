@@ -3,7 +3,7 @@ import { Field } from 'formik';
 import styled from 'styled-components';
 
 const Input = styled(Field)`
-  font-size: 3rem;
+  font-size: 2rem;
   height: 7rem;
   width: 100%;
   border-radius: 2rem;
@@ -11,11 +11,14 @@ const Input = styled(Field)`
   padding: 1rem 2rem;
   position: relative;
   z-index: 1;
-  
+
+  option {
+    font-size: 2rem;
+  }
 `;
 
-const InputField = ({ ...props }) => {
-  return <Input {...props} />;
+const InputField = ({ childern, ...props }) => {
+  return childern ? <Input {...props}>{childern}</Input> : <Input {...props} />;
 };
 
 export default InputField;
