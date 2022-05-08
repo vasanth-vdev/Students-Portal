@@ -22,9 +22,9 @@
   letter-spacing: 0.07em;
 }
 .PostedLeavePrintoutContainer input[type='text'],
-input[type='email'],
-input[type='password'],
-input[type='date'] {
+.PostedLeavePrintoutContainer input[type='email'],
+.PostedLeavePrintoutContainer input[type='password'],
+.PostedLeavePrintoutContainer input[type='date'] {
   display: inline-block;
   width: 100%;
   border-radius: 10px;
@@ -84,7 +84,7 @@ input[type='date'] {
 
   display: block;
 }
-button {
+.PostedLeavePrintoutContainer button {
   display: inline-block;
   width: 100%;
   padding: 1rem;
