@@ -67,6 +67,8 @@ const DetailsContainer = styled.div`
 const StaffDetails = styled.div`
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 `;
 const StaffDetailHeader = styled.div`
   height: auto;
@@ -113,7 +115,7 @@ const ProfileViewer = () => {
       );
       setStudentProjects(data);
     })();
-  }, []); 
+  }, []);
   useEffect(() => {
     (async () => {
       const data = await getData(
@@ -202,9 +204,14 @@ const ProfileViewer = () => {
               </StaffDetails>
             </DetailsContainer>
           </GlassSheet>
-          <CertificateHeader>
-            <PageHeader text='PSG Polytechnic College' />
-          </CertificateHeader>
+          {studentCCertificates ||
+            studentCoCertificates ||
+            studentExCertificates ||
+            (studentProjects && (
+              <CertificateHeader>
+                <PageHeader text='PSG Polytechnic College' />
+              </CertificateHeader>
+            ))}
 
           {studentCCertificates &&
             studentCCertificates.map((item, index) => (

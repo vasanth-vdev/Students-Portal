@@ -8,7 +8,6 @@ import GreenButton from '../../components/GreenButton';
 import InputField from '../../components/InputField';
 import { useFirestore } from '../../Context/FirestoreContext';
 import { useAuth } from '../../Context/AuthContext';
-import { where } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
 const InputHeader = styled.h1`
