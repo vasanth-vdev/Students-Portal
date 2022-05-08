@@ -54,6 +54,8 @@ const AuthenticationProvider = ({ children }) => {
       auth.onAuthStateChanged((user) => {
         setCurrentUser(user);
         setpending(false);
+        console.log(user);
+        console.log(userData);
       }),
     []
   );
