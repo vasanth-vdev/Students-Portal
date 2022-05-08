@@ -27,3 +27,8 @@
   mix-blend-mode: overlay;
   opacity: 0.2;
 }
+.greenButton:disabled,
+.greenButton[disabled] {
+  background-color: gray;
+  border: 2.5px dashed black;
+}

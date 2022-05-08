@@ -1,21 +1,36 @@
 import React from 'react';
+import { useFirestore } from '../Context/FirestoreContext';
 import './css/CertificateCase.css';
 
-const CertificateCase = (props) => {
+const CertificateCase = ({
+  url,
+  image,
+  title,
+  deleteUID,
+  tableName,
+  getProjects,
+}) => {
+  const { deleteData } = useFirestore();
   return (
-    <div>
-      <a href={props.Link}>
-        <div className='MainContainer'>
-          <img
-            className='CertImage'
-            src={props.Certificate}
-            alt='Certificate'
-          />
+    <div className='certificateContainer'>
+      <a href={url ? url : '#'}>
+        <div className='certificateSection'>
+          <img className='CertImage' src={image} alt={title} />
         </div>
         <div className='SubHeaderContainer'>
-          <h2 className='SubHeader'>{props.subheader}</h2>
+          <h2 className='SubHeader'>{title}</h2>
         </div>
       </a>
+      {deleteUID && (
+        <button
+          onClick={() => {
+            deleteData(tableName, deleteUID);
+            getProjects();
+          }}
+          className='deleteButton'>
+          Delete
+        </button>
+      )}
     </div>
   );
 };
