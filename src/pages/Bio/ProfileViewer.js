@@ -113,7 +113,7 @@ const ProfileViewer = () => {
       );
       setStudentProjects(data);
     })();
-  }, []);
+  }, []); 
   useEffect(() => {
     (async () => {
       const data = await getData(
