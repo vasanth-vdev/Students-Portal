@@ -60,7 +60,7 @@ const FirestoreProvider = ({ children }) => {
     }
   };
 
-  const deleteData = async (table, uid, data) => {
+  const deleteData = async (table, uid) => {
     const dataDocRef = doc(db, table, uid);
     try {
       await deleteDoc(dataDocRef);

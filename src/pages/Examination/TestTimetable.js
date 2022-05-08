@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Table from '../../components/Table';
 import PageHeader from '../../components/PageHeader';
 import PageContent from '../../components/PageContent';
-import TestTimeTableData from '../../data/Examination/TestTimetableData';
 import { useFirestore } from './../../Context/FirestoreContext';
 import { where } from 'firebase/firestore';
 import { useAuth } from '../../Context/AuthContext';

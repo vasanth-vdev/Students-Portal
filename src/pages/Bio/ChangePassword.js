@@ -16,6 +16,7 @@ const InputHeader = styled.h1`
 
 const ChangePassword = () => {
   const { passwordUpdate, logOut } = useAuth();
+
   return (
     <div>
       <PageHeader text='Change Password' />
@@ -56,7 +57,7 @@ const ChangePassword = () => {
                     width: '100%',
                   }}
                   disabled={isSubmitting}>
-                  SUBMIT
+                  Change Password
                 </GreenButton>
               </Form>
             )}

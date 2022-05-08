@@ -4,11 +4,9 @@ import { MdOutlineDashboard } from 'react-icons/md';
 import { MdSchool } from 'react-icons/md';
 import { SiMicrosoftacademic } from 'react-icons/si';
 import TestTimetable from '../pages/Examination/TestTimetable';
-import SeatingArrangement from '../pages/Examination/SeatingArrangement';
 import ExamTimeTable from '../pages/Examination/ExamTimeTable';
 import ExamResult from '../pages/Examination/ExamResult';
 import PostedLeavePrintout from '../pages/Academic/PostedLeavePrintout';
-import SemesterFeeStructure from '../pages/Academic/SemesterFeeStructure';
 import ProfileUpdate from '../pages/Bio/ProfileUpdate';
 import ProjectsManagement from '../pages/Bio/ProjectsManagement';
 import CertificateManagement from '../pages/Bio/CertificateManagement';
@@ -16,7 +14,8 @@ import StudentsAttendance from '../pages/Academic/StudentsAttendance';
 import CAMarks from '../pages/Academic/CAMarks';
 import { FaUserAlt } from 'react-icons/fa';
 // import { BiSitemap } from 'react-icons/bi';
-
+// import SeatingArrangement from '../pages/Examination/SeatingArrangement';
+// import SemesterFeeStructure from '../pages/Academic/SemesterFeeStructure';
 const StudentDashboardData = [
   {
     header: {
