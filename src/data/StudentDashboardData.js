@@ -42,11 +42,11 @@ const StudentDashboardData = [
               URL: 'PostedLeavePrintout',
               page: <PostedLeavePrintout />,
             },
-            {
-              title: 'Semester Fee',
-              URL: 'SemesterFeeStructure',
-              page: <SemesterFeeStructure />,
-            },
+            // {
+            //   title: 'Semester Fee',
+            //   URL: 'SemesterFeeStructure',
+            //   page: <SemesterFeeStructure />,
+            // },
             {
               title: 'Attendance',
               URL: 'StudentsAttendance',
@@ -68,11 +68,11 @@ const StudentDashboardData = [
               URL: 'TestTimetable',
               page: <TestTimetable />,
             },
-            {
-              title: 'Seating Arrangement',
-              URL: 'SeatingArrangement',
-              page: <SeatingArrangement />,
-            },
+            // {
+            //   title: 'Seating Arrangement',
+            //   URL: 'SeatingArrangement',
+            //   page: <SeatingArrangement />,
+            // },
             {
               title: 'Exam Timetable',
               URL: 'ExamTimetable',
