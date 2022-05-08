@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import GlassSheet from '../../components/GlassSheet';
 import styled from 'styled-components';
 import PageHeader from '../../components/PageHeader';
 import PageContent from '../../components/PageContent';
 import CertificateCase from '../../components/CertificateCase';
-import Certificate from './../../assets/images/Student.jpg';
 import { useAuth } from './../../Context/AuthContext';
+import { useFirestore } from '../../Context/FirestoreContext';
+import { where } from 'firebase/firestore';
 
 const Container = styled.div`
   height: auto;
@@ -13,22 +14,33 @@ const Container = styled.div`
   border: 1px solid transparent;
   padding: 0rem;
   margin: 0rem;
+  @media screen and (max-width: 900px) {
+    & {
+      margin: 8rem 0;
+    }
+  }
+  @media screen and (max-width: 450px) {
+    & {
+      margin: 8rem 0;
+    }
+  }
 `;
 
 const StaffImage = styled.img`
   position: absolute;
   left: 50%;
+  top: 12.5%;
   transform: translateX(-50%);
   height: 20rem;
   width: 20rem;
   border-radius: 10rem;
   box-shadow: 4px 4px 24px -4px rgba(0, 0, 0, 0.3);
   object-fit: cover;
-  z-index: 1;
+  z-index: 5;
 
   @media screen and (max-width: 450px) {
     & {
-      top: 20%;
+      top: 15%;
       height: 15rem;
       width: 15rem;
     }
@@ -88,18 +100,47 @@ const CertificateHeader = styled.div`
 
 const ProfileViewer = () => {
   const { userData } = useAuth();
+  const { getData } = useFirestore();
+  const [studentProjects, setStudentProjects] = useState([]);
+  const [studentCCertificates, setStudentCCertificates] = useState([]);
+  const [studentCoCertificates, setStudentCoCertificates] = useState([]);
+  const [studentExCertificates, setStudentExCertificates] = useState([]);
+  useEffect(() => {
+    (async () => {
+      const data = await getData(
+        'studentProjects',
+        where('rollno', '==', userData.rollno)
+      );
+      setStudentProjects(data);
+    })();
+  }, []);
+  useEffect(() => {
+    (async () => {
+      const data = await getData(
+        'studentCertificates',
+        where('rollno', '==', userData.rollno)
+      );
+      const curricular = data.filter((item) =>
+        item.certificateType === 'Curricular' ? item : null
+      );
+      const coCurricular = data.filter((item) =>
+        item.certificateType === 'Co-Curricular' ? item : null
+      );
+      const extraCurricular = data.filter((item) =>
+        item.certificateType === 'Extra-Curricular' ? item : null
+      );
+      setStudentCCertificates(curricular);
+      setStudentCoCertificates(coCurricular);
+      setStudentExCertificates(extraCurricular);
+    })();
+  }, []);
   return (
     <div>
       <PageHeader text='About Me' />
       <PageContent>
-        {console.log(userData)}
         <Container>
           <StaffImage src={userData.photo} alt='staff' />
-          <GlassSheet
-            height='auto'
-            width='auto'
-            borderRadius='2rem'
-            margin='12rem 0rem 0rem 0rem'>
+          <GlassSheet>
             <StaffName>{userData.name}</StaffName>
             <DetailsContainer className='DetailsContainer'>
               <StaffDetails className='StaffDetails'>
@@ -164,43 +205,56 @@ const ProfileViewer = () => {
           <CertificateHeader>
             <PageHeader text='PSG Polytechnic College' />
           </CertificateHeader>
-          <div>
-            <ContentHeader>Curricular</ContentHeader>
-            <CertificateViewer>
-              <CertificateCase
-                subheader='C Certificate'
-                Certificate={Certificate}
-              />
-            </CertificateViewer>
-          </div>
-          <div>
-            <ContentHeader>Co - Curricular</ContentHeader>
-            <CertificateViewer>
-              <CertificateCase
-                subheader='C Certificate'
-                Certificate={Certificate}
-              />
-            </CertificateViewer>
-          </div>
-          <div>
-            <ContentHeader>Extra - Curricular</ContentHeader>
-            <CertificateViewer>
-              <CertificateCase
-                Link='huvbebuvtrgrtghueghrty'
-                subheader='bvhbrehwruuoughwyefyugrfgywrhuiwtutjwuigt'
-                Certificate={Certificate}
-              />
-            </CertificateViewer>
-          </div>
-          <div>
-            <ContentHeader>Projects</ContentHeader>
-            <CertificateViewer>
-              <CertificateCase
-                subheader='bvhbrehwruuoughwyefyugrfgywrhuiwtutjwuigt'
-                Certificate={Certificate}
-              />
-            </CertificateViewer>
-          </div>
+
+          {studentCCertificates &&
+            studentCCertificates.map((item, index) => (
+              <React.Fragment key={index}>
+                <ContentHeader>Curricular</ContentHeader>
+                <CertificateViewer>
+                  <CertificateCase
+                    title={item.certificateName}
+                    image={item.thumbnailURL}
+                  />
+                </CertificateViewer>
+              </React.Fragment>
+            ))}
+          {studentCoCertificates &&
+            studentCoCertificates.map((item, index) => (
+              <React.Fragment key={index}>
+                <ContentHeader>Co - Curricular</ContentHeader>
+                <CertificateViewer>
+                  <CertificateCase
+                    title={item.certificateName}
+                    image={item.thumbnailURL}
+                  />
+                </CertificateViewer>
+              </React.Fragment>
+            ))}
+          {studentExCertificates &&
+            studentExCertificates.map((item, index) => (
+              <React.Fragment key={index}>
+                <ContentHeader>Extra - Curricular</ContentHeader>
+                <CertificateViewer>
+                  <CertificateCase
+                    title={item.certificateName}
+                    image={item.thumbnailURL}
+                  />
+                </CertificateViewer>
+              </React.Fragment>
+            ))}
+          {studentProjects &&
+            studentProjects.map((item, index) => (
+              <React.Fragment key={index}>
+                <ContentHeader>Projects</ContentHeader>
+                <CertificateViewer>
+                  <CertificateCase
+                    title={item.projectName}
+                    url={item.projectURL}
+                    image={item.thumbnailURL}
+                  />
+                </CertificateViewer>
+              </React.Fragment>
+            ))}
         </Container>
       </PageContent>
     </div>
