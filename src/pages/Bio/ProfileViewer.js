@@ -5,7 +5,6 @@ import PageHeader from '../../components/PageHeader';
 import PageContent from '../../components/PageContent';
 import CertificateCase from '../../components/CertificateCase';
 import Certificate from './../../assets/images/Student.jpg';
-import '../../components/css/ProfileViewer.css';
 import { useAuth } from './../../Context/AuthContext';
 
 const Container = styled.div`
@@ -93,6 +92,7 @@ const ProfileViewer = () => {
     <div>
       <PageHeader text='About Me' />
       <PageContent>
+        {console.log(userData)}
         <Container>
           <StaffImage src={userData.photo} alt='staff' />
           <GlassSheet
@@ -136,7 +136,6 @@ const ProfileViewer = () => {
               <StaffDetails>
                 <StaffDetailHeader>Phone Number:</StaffDetailHeader>
                 <StaffDetailsContent>
-                  {' '}
                   {userData.phoneNumber}
                 </StaffDetailsContent>
               </StaffDetails>
@@ -149,6 +148,16 @@ const ProfileViewer = () => {
               <StaffDetails>
                 <StaffDetailHeader>Address:</StaffDetailHeader>
                 <StaffDetailsContent>{userData.address}</StaffDetailsContent>
+              </StaffDetails>
+              <StaffDetails>
+                <StaffDetailHeader>Tutor:</StaffDetailHeader>
+                <StaffDetailsContent>{userData.tutor}</StaffDetailsContent>
+              </StaffDetails>
+              <StaffDetails>
+                <StaffDetailHeader>Semester:</StaffDetailHeader>
+                <StaffDetailsContent>
+                  {userData.semester ? userData.semester : '1'}
+                </StaffDetailsContent>
               </StaffDetails>
             </DetailsContainer>
           </GlassSheet>
