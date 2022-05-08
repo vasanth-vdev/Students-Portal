@@ -1,0 +1,3 @@
+remove console logs
+remove button in loader
+remove comment in firebase config for browserPersistance
