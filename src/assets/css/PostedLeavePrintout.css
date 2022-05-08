@@ -1,30 +1,36 @@
 .PostedLeavePrintoutContainer {
-	position: relative;
-	width: 100%;
-	background: transparent;
-	box-shadow: 4px 4px 24px -4px rgba(0, 0, 0, 0.3);
-	backdrop-filter: blur(1rem);
-	border-radius: 20px;
-	padding: 5rem 0;
-	display: flex;
-	flex-direction: column;
+  position: relative;
+  width: 100%;
+  background: transparent;
+  box-shadow: 4px 4px 24px -4px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(1rem);
+  border-radius: 20px;
+  padding: 5rem 0;
+  display: flex;
+  flex-direction: column;
 }
 .PostedLeavePrintoutContainer::after {
-	content: '';
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	z-index: -1;
-	top: 0;
-	border-radius: 20px;
-	left: 0;
-	background: url('./../images/backgrounds/frost.png');
-	mix-blend-mode: overlay;
-	opacity: 1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  top: 0;
+  border-radius: 20px;
+  left: 0;
+  background: url('./../images/backgrounds/frost.png');
+  mix-blend-mode: overlay;
+  opacity: 1;
 }
 .PostedLeavePrintoutForm {
-	width: 90%;
-	margin: 0 auto;
+  width: 90%;
+  margin: 0 auto;
 }
 @media screen and (max-width: 900px) {
+}
+.StatusContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5rem;
+  justify-content: center;
 }

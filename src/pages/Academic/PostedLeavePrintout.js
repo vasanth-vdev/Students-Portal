@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PageHeader from '../../components/PageHeader';
 import PageContent from '../../components/PageContent';
-
-import SideNameInput from '../../components/SideNameInput';
+import LeaveStatusShell from '../../components/LeaveStatusShell';
 import GreenButton from './../../components/GreenButton';
 import { Field, Form, Formik } from 'formik';
 import './../../assets/css/PostedLeavePrintout.css';
 import './../../components/css/SideNameInput.css';
 import { useFirestore } from '../../Context/FirestoreContext';
+import { useAuth } from '../../Context/AuthContext';
+import { where } from 'firebase/firestore';
 
 const PostedLeavePrintout = () => {
-  const { addData, getDownloadURL } = useFirestore();
-
+  const { addData, getFileURL, getData } = useFirestore();
+  const [leaveData, setleaveData] = useState([]);
+  const { userData } = useAuth();
+  const tableName = 'postedLeavePrintout';
+  useEffect(() => {
+    (async function () {
+      const q = where('rollNo', '==', userData.rollno);
+      const data = await getData(tableName, q);
+      setleaveData(data);
+    })();
+  }, []);
   return (
     <div>
       <PageHeader text='Posted Leave Printout' />
@@ -19,54 +29,44 @@ const PostedLeavePrintout = () => {
         <div className='PostedLeavePrintoutContainer'>
           <Formik
             initialValues={{
-              name: '',
-              rollNo: '',
               fromDate: '',
               toDate: '',
               reason: '',
               document: null,
             }}
             onSubmit={async (values) => {
-              // await addData('postedLeavePrint', { values });
-              getDownloadURL(values.document, 'check');
+              const user = {
+                tutorID: userData.tutorID,
+                name: userData.name,
+                photo: userData.photo,
+                rollNo: userData.rollno,
+                responded: false,
+                status: null,
+              };
+              const url = await getFileURL(values.document, tableName);
+              values.document = url;
+              const data = {
+                ...values,
+                ...user,
+              };
+              await addData(tableName, data);
+              document.querySelector('#PostedLeavePrintoutForm').reset();
             }}>
-            {({ setFieldValue }) => (
-              <Form className='PostedLeavePrintoutForm'>
-                <div className='SideNameInputGroup'>
-                  <h1 className='SideName'>Name</h1>
-                  <Field
-                    type='text'
-                    className='SideNameInput'
-                    name='name'
-                    required
-                  />
-                </div>
-                <div className='SideNameInputGroup'>
-                  <h1 className='SideName'>Roll No</h1>
-                  <Field
-                    type='text'
-                    className='SideNameInput'
-                    name='rollNo'
-                    required
-                  />
-                </div>
+            {({ setFieldValue, isSubmitting }) => (
+              <Form
+                className='PostedLeavePrintoutForm'
+                id='PostedLeavePrintoutForm'>
                 <div className='SideNameInputGroup'>
                   <h1 className='SideName'>From Date</h1>
                   <Field
                     type='date'
                     className='SideNameInput'
                     name='fromDate'
-                    required
                   />
                 </div>
                 <div className='SideNameInputGroup'>
                   <h1 className='SideName'>To Date</h1>
-                  <Field
-                    type='date'
-                    className='SideNameInput'
-                    name='toDate'
-                    required
-                  />
+                  <Field type='date' className='SideNameInput' name='toDate' />
                 </div>
                 <div className='SideNameInputGroup' style={{ width: '100%' }}>
                   <h1 className='SideName'>Reason</h1>
@@ -76,7 +76,6 @@ const PostedLeavePrintout = () => {
                     rows='5'
                     maxLength='450'
                     name='reason'
-                    required
                   />
                 </div>
                 <div className='SideNameInputGroup' style={{ width: '100%' }}>
@@ -88,13 +87,35 @@ const PostedLeavePrintout = () => {
                     onChange={(e) => {
                       setFieldValue('document', e.currentTarget.files[0]);
                     }}
-                    required
                   />
                 </div>
-                <GreenButton marginCenter>Print</GreenButton>
+                <GreenButton disabled={isSubmitting} marginCenter>
+                  Print
+                </GreenButton>
               </Form>
             )}
           </Formik>
+        </div>
+        <div>
+          <h1 style={{ fontSize: '2.5rem', margin: '3rem 0rem' }}>
+            Leave Status
+          </h1>
+          <div className='StatusContainer'>
+            {console.log(leaveData)}
+            {leaveData.map((item, index) => (
+              <LeaveStatusShell
+              key={index}
+                Name={userData.name}
+                Rollno={item.rollNo}
+                document={item.document}
+                Filename='Attachement'
+                From={item.fromDate}
+                To={item.toDate}
+                Days='5'
+                Status={item.status}
+              />
+            ))}
+          </div>
         </div>
       </PageContent>
     </div>

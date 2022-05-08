@@ -22,9 +22,9 @@
   letter-spacing: 0.07em;
 }
 .PostedLeavePrintoutContainer input[type='text'],
-input[type='email'],
-input[type='password'],
-input[type='date'] {
+.PostedLeavePrintoutContainer input[type='email'],
+.PostedLeavePrintoutContainer input[type='password'],
+.PostedLeavePrintoutContainer input[type='date'] {
   display: inline-block;
   width: 100%;
   border-radius: 10px;
@@ -55,7 +55,7 @@ input[type='date'] {
   margin: 1rem 0;
   padding: 1.5rem;
 }
-.PostedLeavePrintoutContainer input[type='file']::-webkit-file-upload-button {
+ input[type='file']::-webkit-file-upload-button {
   border-radius: 10px;
   height: 5rem;
   margin-bottom: 2.5rem;
@@ -64,17 +64,7 @@ input[type='date'] {
   outline: none;
   display: block;
 }
-.PostedLeavePrintoutContainer input[type='file']::file-selector-button {
-  border-radius: 10px;
-  height: 5rem;
-  margin-bottom: 2.5rem;
-  padding: 0 5rem;
-  border: 2px solid gray;
-  outline: none;
-
-  display: block;
-}
-.PostedLeavePrintoutContainer input[type='file']::-ms-browse {
+ input[type='file']::file-selector-button {
   border-radius: 10px;
   height: 5rem;
   margin-bottom: 2.5rem;
@@ -84,7 +74,17 @@ input[type='date'] {
 
   display: block;
 }
-button {
+ input[type='file']::-ms-browse {
+  border-radius: 10px;
+  height: 5rem;
+  margin-bottom: 2.5rem;
+  padding: 0 5rem;
+  border: 2px solid gray;
+  outline: none;
+
+  display: block;
+}
+.PostedLeavePrintoutContainer button {
   display: inline-block;
   width: 100%;
   padding: 1rem;

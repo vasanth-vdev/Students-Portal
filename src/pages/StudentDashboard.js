@@ -10,7 +10,7 @@ import {
   MdColorLens,
 } from 'react-icons/md';
 import NavItem from '../components/DashboardNavItem';
-import { Navigate, NavLink } from 'react-router-dom';
+import { Link, Navigate, NavLink } from 'react-router-dom';
 import StudentDashboardMobile from './StudentDashboardMobile';
 import { useAuth } from '../Context/AuthContext';
 import { collection, getDocs, query, where } from 'firebase/firestore';
@@ -142,14 +142,16 @@ const StudentDashboard = ({ children }) => {
             }>
             {StudentDashboardData.map((item, index) => (
               <div className='dashboardHeader' key={index}>
-                <div className='dashboardHeaderLeft'>
-                  <img
-                    className='dashboardHeaderUserAccount'
-                    src={userData.photo}
-                    alt='user'
-                  />
-                  <h1 className='dashboardHeaderUsername'>{userData.name}</h1>
-                </div>
+                <Link to='/ProfileView'>
+                  <div className='dashboardHeaderLeft'>
+                    <img
+                      className='dashboardHeaderUserAccount'
+                      src={userData.photo}
+                      alt='user'
+                    />
+                    <h1 className='dashboardHeaderUsername'>{`${userData.name} - ${userData.rollno}`}</h1>
+                  </div>
+                </Link>
                 <div className='dashboardHeaderRight'>
                   <div
                     className='userActionBtn'
@@ -163,9 +165,11 @@ const StudentDashboard = ({ children }) => {
                   <div className='userActionBtn notification'>
                     <MdOutlineNotificationsActive />
                   </div>
-                  <div className='userActionBtn password'>
-                    <MdOutlineFingerprint />
-                  </div>
+                  <Link to='/ChangePassword'>
+                    <div className='userActionBtn password'>
+                      <MdOutlineFingerprint />
+                    </div>
+                  </Link>
                   <div
                     className='userActionBtn logout'
                     onClick={() => logOut()}>
