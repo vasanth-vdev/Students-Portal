@@ -1,4 +1,8 @@
-import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import {
+  signInWithEmailAndPassword,
+  signOut,
+  updatePassword,
+} from 'firebase/auth';
 import { auth } from '../Config/firebaseConfig';
 import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -42,7 +46,9 @@ const AuthenticationProvider = ({ children }) => {
     }
     setLoading(false);
   };
-
+  const passwordUpdate = (password) => {
+    return updatePassword(currentUser, password);
+  };
   useEffect(
     () =>
       auth.onAuthStateChanged((user) => {
@@ -58,6 +64,7 @@ const AuthenticationProvider = ({ children }) => {
     pending,
     emailPasswordSignIn,
     logOut,
+    passwordUpdate,
     error,
     loading,
     setData,

@@ -2,9 +2,11 @@ import React from 'react';
 import PageHeader from '../../components/PageHeader';
 import PageContent from '../../components/PageContent';
 import GlassSheet from '../../components/GlassSheet';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
 import styled from 'styled-components';
 import GreenButton from '../../components/GreenButton';
+import InputField from '../../components/InputField';
+import { useAuth } from '../../Context/AuthContext';
 
 const InputHeader = styled.h1`
   font-size: 2rem;
@@ -12,35 +14,52 @@ const InputHeader = styled.h1`
   margin: 2rem 0rem;
 `;
 
-const InputField = styled.input`
-  height: 1rem;
-  width: 4rem;
-  font-size: 2rem;
-  padding: 2rem 4rem;
-`;
-
 const ChangePassword = () => {
+  const { passwordUpdate, logOut } = useAuth();
   return (
     <div>
       <PageHeader text='Change Password' />
       <PageContent>
-        <GlassSheet
-          height='auto'
-          width='auto'
-          borderRadius='4rem'
-          padding='4rem 6rem'>
-          <Formik>
-            <Form>
-              <div>
-                <InputHeader>New Password</InputHeader>
-                <InputField type='password' name='OldPassword' />
-              </div>
-              <div>
-                <InputHeader>Re-type</InputHeader>
-                <InputField type='password' name='NewPassword' />
-              </div>
-              <GreenButton>SUBMIT</GreenButton>
-            </Form>
+        <GlassSheet>
+          <Formik
+            initialValues={{
+              password: '',
+              rePassword: '',
+            }}
+            onSubmit={async (values) => {
+              if (values.password !== values.rePassword) {
+                alert(`Passwords Don't Macth`);
+                document.querySelector('#changePassword').reset();
+              } else {
+                try {
+                  passwordUpdate(values.password);
+                  await logOut();
+                } catch (err) {
+                  alert('Failed To Change,', err);
+                }
+              }
+            }}>
+            {({ isSubmitting }) => (
+              <Form id='changePassword'>
+                <div>
+                  <InputHeader>New Password</InputHeader>
+                  <InputField type='password' name='password' />
+                </div>
+                <div>
+                  <InputHeader>Re-type Password</InputHeader>
+                  <InputField type='password' name='rePassword' />
+                </div>
+                <GreenButton
+                  style={{
+                    margin: '2.5rem 0',
+                    padding: '1.5rem',
+                    width: '100%',
+                  }}
+                  disabled={isSubmitting}>
+                  SUBMIT
+                </GreenButton>
+              </Form>
+            )}
           </Formik>
         </GlassSheet>
       </PageContent>
