@@ -2,23 +2,20 @@ import React, { useState } from 'react';
 import './css/Pagination.css';
 
 const Pagination = () => {
+  const pageno = [1, 2, 3, 4, 5, 6, 7, 8];
   const [pagination, setPagination] = useState(1);
   return (
     <div>
       {console.log(pagination)}
       <div className='Pagination-Body'>
-        <button onClick={() => setPagination(1)} className='btnf'>
-          1
-        </button>
-        <button onClick={() => setPagination(2)}>2</button>
-        <button onClick={() => setPagination(3)}>3</button>
-        <button onClick={() => setPagination(4)}>4</button>
-        <button onClick={() => setPagination(5)}>5</button>
-        <button onClick={() => setPagination(6)}>6</button>
-        <button onClick={() => setPagination(7)}>7</button>
-        <button onClick={() => setPagination(8)} className='btnl'>
-          8
-        </button>
+        {pageno.map((item, index) => (
+          <button
+            key={index}
+            onClick={() => setPagination(item)}
+            className={pagination === item ? 'btn1 btnActive' : 'btn1'}>
+            {item}
+          </button>
+        ))}
       </div>
     </div>
   );
