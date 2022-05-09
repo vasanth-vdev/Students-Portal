@@ -3,7 +3,7 @@
   background: rgba(255, 249, 249, 0.8);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
-  width: 50rem;
+  max-width: 50rem;
   height: auto;
 }
 .ProfileContent {
@@ -37,6 +37,7 @@
 .DateSection {
   display: flex;
   flex-direction: column;
+  margin-left: 2rem;  
 }
 .Date {
   font-size: 1.4rem;
@@ -82,4 +83,43 @@
   padding: 1.2rem;
   font-weight: 700;
   text-transform: uppercase;
+}
+@media only screen and (max-width: 600px) {
+  .Container {
+    border-radius: 25px;
+    /* width: 40rem; */
+  }
+  .ProfileContent {
+    padding: 2rem 2rem 1rem 2rem;
+  }
+  .Name {
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+  .DateContainer {
+    width: 12rem;
+    border-radius: 1.6rem;
+    padding: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+  .Date {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  .Rollno {
+    font-size: 1.6rem;
+  }
+  .FileHolder {
+    margin: 1.6rem 0rem 0rem 0rem;
+    width: 14rem;
+    border-radius: 2rem;
+    padding: 0.8rem;
+    font-size: 1.4rem;
+  }
+  .StatusShower {
+    font-size: 1.6rem;
+    border-radius: 0rem 0rem 25px 25px;
+    padding: 1rem;
+    letter-spacing: 0.04em;
+  }
 }
