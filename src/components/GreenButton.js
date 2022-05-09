@@ -4,7 +4,7 @@ const GreenButton = ({ children, marginCenter, ...props }) => {
   const backgrounds = [
     'royalBlue',
     'olive',
-    'blueVoilet',
+    'blueviolet',
     'chocolate',
     'crimson',
     'orange',
