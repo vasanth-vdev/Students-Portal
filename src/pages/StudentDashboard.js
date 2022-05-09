@@ -22,7 +22,7 @@ const StudentDashboard = ({ children }) => {
   const backgrounds = [
     'royalBlue',
     'olive',
-    'blueVoilet',
+    'blueviolet',
     'chocolate',
     'crimson',
     'orange',

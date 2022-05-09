@@ -1,9 +1,9 @@
 .greenButton {
   background: #99add3;
   border-radius: 10px;
-  border: 2px solid #ffffff;
+  border: none;
   font-style: normal;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 24px;
   line-height: 32px;
   border-radius: 20px;
@@ -14,6 +14,7 @@
   height: 100%;
   position: relative;
   z-index: 1;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5);
 }
 .greenButton::after {
   position: absolute;
@@ -37,4 +38,7 @@
 }
 .olive {
   background: #adad68;
+}
+.blueviolet {
+  background: blueviolet;
 }
