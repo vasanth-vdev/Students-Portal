@@ -6,13 +6,13 @@ import NavItem from '../components/DashboardNavItem';
 import StudentDashboardData from '../data/StudentDashboardData.js';
 import {
   MdOutlineLogout,
-  MdOutlineNotificationsActive,
   MdColorLens,
+  MdOutlineFingerprint,
 } from 'react-icons/md';
 import { useAuth } from '../Context/AuthContext';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../Config/firebaseConfig';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import Loader from '../components/Loader';
 
 const StudentDashboardMobile = ({ children }) => {
@@ -78,15 +78,22 @@ const StudentDashboardMobile = ({ children }) => {
               <NavItem data={item} key={index} sideBarHandle={sideBarHandle} />
             ))}
             <div className='dashboardSidebarUserAction'>
-              <img
-                className='dashboardSidebarUserAccount'
-                src={userData.photo}
-                alt='user'
-              />
-              <h1 className='dashboardSidebarUsername'>{`${userData.name} - ${userData.rollno}`}</h1>
-              <div className='userActionBtnMob notification'>
-                <MdOutlineNotificationsActive />
-              </div>
+              <Link
+                onClick={sideBarHandle}
+                to='/ProfileView'
+                style={{ display: 'flex', placeItems: 'center' }}>
+                <img
+                  className='dashboardSidebarUserAccount'
+                  src={userData.photo}
+                  alt='user'
+                />
+                <h1 className='dashboardSidebarUsername'>{`${userData.name} - ${userData.rollno}`}</h1>
+              </Link>
+              <Link to='/ChangePassword'>
+                <div className='userActionBtn password' onClick={sideBarHandle}>
+                  <MdOutlineFingerprint />
+                </div>
+              </Link>
             </div>
           </div>
         ))}
