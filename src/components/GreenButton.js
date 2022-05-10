@@ -14,7 +14,7 @@ const GreenButton = ({ children, marginCenter, ...props }) => {
     if (localStorage.bgID) {
       setBackground(parseInt(localStorage.getItem('bgID')));
     }
-  }, []);
+  }, [background]);
 
   return (
     <button
