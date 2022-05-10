@@ -14,11 +14,10 @@ const TodaySchedule = () => {
   const { userData } = useAuth();
   useEffect(() => {
     (async () => {
-      const data = await getData(
-        'classTimetable',
-        where('batch', '==', userData.batch) &&
-          where('department', '==', userData.department)
-      );
+      const data = await getData('classTimetable', [
+        where('batch', '==', userData.batch),
+        where('department', '==', userData.department),
+      ]);
       setTodaySchedule(
         data[0].timeTable.filter((item) =>
           parseInt(item.weekDay) === day ? item : null

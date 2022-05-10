@@ -11,12 +11,11 @@ const ExamTimeTable = () => {
   const [examTimetable, setExamTimetable] = useState([]);
   useEffect(() => {
     (async () => {
-      const data = await getData(
-        'examTimetable',
-        where('batch', '==', userData.batch) &&
-          where('department', '==', userData.department) &&
-          where('semester', '==', userData.semester ? userData.semester : '1')
-      );
+      const data = await getData('examTimetable', [
+        where('batch', '==', userData.batch),
+        where('department', '==', userData.department),
+        where('semester', '==', userData.semester ? userData.semester : '1'),
+      ]);
       const table = [
         {
           titles: ['DATE', 'SESSION', 'COURSE CODE ', ' COURSE TITLE'],

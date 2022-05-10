@@ -38,10 +38,9 @@ const CertificateManagement = () => {
   const [studentExCertificates, setStudentExCertificates] = useState([]);
   useEffect(() => {
     (async () => {
-      const data = await getData(
-        tableName,
-        where('rollno', '==', userData.rollno)
-      );
+      const data = await getData(tableName, [
+        where('rollno', '==', userData.rollno),
+      ]);
       const curricular = data.filter((item) =>
         item.certificateType === 'Curricular' ? item : null
       );
@@ -57,10 +56,9 @@ const CertificateManagement = () => {
     })();
   }, []);
   const getCertificates = async () => {
-    const data = await getData(
-      tableName,
-      where('rollno', '==', userData.rollno)
-    );
+    const data = await getData(tableName, [
+      where('rollno', '==', userData.rollno),
+    ]);
     const curricular = data.filter((item) =>
       item.certificateType === 'Curricular' ? item : null
     );

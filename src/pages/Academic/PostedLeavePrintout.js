@@ -17,8 +17,9 @@ const PostedLeavePrintout = () => {
   const tableName = 'postedLeavePrintout';
   useEffect(() => {
     (async function () {
-      const q = where('rollNo', '==', userData.rollno);
-      const data = await getData(tableName, q);
+      const data = await getData(tableName, [
+        where('rollNo', '==', userData.rollno),
+      ]);
       setleaveData(data);
     })();
   }, []);
@@ -104,7 +105,7 @@ const PostedLeavePrintout = () => {
             {console.log(leaveData)}
             {leaveData.map((item, index) => (
               <LeaveStatusShell
-              key={index}
+                key={index}
                 Name={userData.name}
                 Rollno={item.rollNo}
                 document={item.document}

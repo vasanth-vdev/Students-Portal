@@ -36,18 +36,16 @@ const ProjectsManagement = () => {
   const [studentProjects, setStudentProjects] = useState();
   useEffect(() => {
     (async () => {
-      const data = await getData(
-        tableName,
-        where('rollno', '==', userData.rollno)
-      );
+      const data = await getData(tableName, [
+        where('rollno', '==', userData.rollno),
+      ]);
       setStudentProjects(data);
     })();
   }, []);
   const getProjects = async () => {
-    const data = await getData(
-      tableName,
-      where('rollno', '==', userData.rollno)
-    );
+    const data = await getData(tableName, [
+      where('rollno', '==', userData.rollno),
+    ]);
     setStudentProjects(data);
   };
   return (

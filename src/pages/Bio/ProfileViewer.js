@@ -109,19 +109,17 @@ const ProfileViewer = () => {
   const [studentExCertificates, setStudentExCertificates] = useState([]);
   useEffect(() => {
     (async () => {
-      const data = await getData(
-        'studentProjects',
-        where('rollno', '==', userData.rollno)
-      );
+      const data = await getData('studentProjects', [
+        where('rollno', '==', userData.rollno),
+      ]);
       setStudentProjects(data);
     })();
   }, []);
   useEffect(() => {
     (async () => {
-      const data = await getData(
-        'studentCertificates',
-        where('rollno', '==', userData.rollno)
-      );
+      const data = await getData('studentCertificates', [
+        where('rollno', '==', userData.rollno),
+      ]);
       const curricular = data.filter((item) =>
         item.certificateType === 'Curricular' ? item : null
       );
