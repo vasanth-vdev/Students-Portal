@@ -4,17 +4,20 @@
   border: none;
   font-style: normal;
   font-weight: 600;
-  font-size: 24px;
+  font-size: 1.8rem;
   line-height: 32px;
   border-radius: 20px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #ffffff;
   padding: 1rem 4rem;
   height: 100%;
   position: relative;
   z-index: 1;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+}
+.greenButton:hover {
+  opacity: 0.9;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
 }
 .greenButton::after {
   position: absolute;

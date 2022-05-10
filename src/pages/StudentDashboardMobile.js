@@ -61,13 +61,13 @@ const StudentDashboardMobile = ({ children }) => {
       <div className='dashboardSidebarContainerMobile'>
         {StudentDashboardData.map((item, index) => (
           <div
-            className='dashboardSidebarMobile'
+            className={
+              background
+                ? `dashboardSidebarMobile ${backgrounds[background]}`
+                : 'dashboardSidebarMobile'
+            }
             key={index}
-            style={
-              mobileSidebar
-                ? { zIndex: 10, background: backgrounds[background] }
-                : { zIndex: -100, background: backgrounds[background] }
-            }>
+            style={mobileSidebar ? { zIndex: 10 } : { zIndex: -100 }}>
             <img
               onClick={sideBarHandle}
               src={SideBarMenuCloseIcon}
