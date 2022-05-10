@@ -20,6 +20,7 @@
   background-repeat: repeat;
   backdrop-filter: blur(24px);
   position: relative;
+  overflow-x: hidden;
 }
 .dashboardSidebar::after {
   position: absolute;
@@ -30,6 +31,7 @@
   background: url('./../images/backgrounds/frost.png');
   mix-blend-mode: overlay;
   opacity: 0.2;
+  overflow: hidden;
 }
 .dasboardSection {
   position: absolute;
