@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PageHeader from '../../components/PageHeader';
 import PageContent from '../../components/PageContent';
 import CAMarksData from './../../data/Academic/CAMarksData';
@@ -9,6 +9,9 @@ const camarksContainer = {
   marginTop: '5rem',
 };
 const CAMarks = () => {
+  const [pagination, setPagination] = useState(1);
+  const pageno = [1, 2, 3, 4, 5, 6, 7, 8];
+  const handlePagination = (value) => setPagination(value);
   return (
     <div>
       <PageHeader text='CA Marks' />
@@ -39,7 +42,11 @@ const CAMarks = () => {
             <Table data={item.Others} />
           ))}
         </div>
-        <Pagination />
+        <Pagination
+          pageno={pageno}
+          pagination={pagination}
+          handlePagination={handlePagination}
+        />
       </PageContent>
     </div>
   );

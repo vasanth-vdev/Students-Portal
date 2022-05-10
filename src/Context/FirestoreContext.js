@@ -1,5 +1,7 @@
 import { db, storageBucket } from '../Config/firebaseConfig';
 import React, { useContext } from 'react';
+import { where } from 'firebase/firestore';
+
 import {
   addDoc,
   collection,
@@ -30,7 +32,7 @@ const FirestoreProvider = ({ children }) => {
     const dataRef = collection(db, table);
     try {
       if (q) {
-        const qq = query(dataRef, q);
+        const qq = query(dataRef, ...q);
         const data = await getDocs(qq);
         return data.docs.map((doc) => ({ ...doc.data(), uid: doc.id }));
       } else {
