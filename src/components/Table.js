@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './css/Table.css';
 
 const Table = ({ data }) => {
+  const backgrounds = [
+    'royalBlue',
+    'olive',
+    'blueviolet',
+    'chocolate',
+    'crimson',
+    'orange',
+  ];
+  const [background, setBackground] = useState(
+    parseInt(localStorage.getItem('bgID'))
+  );
+
   return (
     <div className='tableWrapper'>
       <table>
@@ -13,7 +25,13 @@ const Table = ({ data }) => {
                   <thead>
                     <tr>
                       {item.titles.map((title, index) => (
-                        <th key={index}>{title}</th>
+                        <th
+                          key={index}
+                          className={
+                            background ? `${backgrounds[background]}` : null
+                          }>
+                          {title}
+                        </th>
                       ))}
                     </tr>
                   </thead>

@@ -12,11 +12,6 @@ const GreenButton = ({ children, marginCenter, ...props }) => {
   const [background, setBackground] = useState(
     parseInt(localStorage.getItem('bgID'))
   );
-  useEffect(() => {
-    if (localStorage.bgID) {
-      setBackground(parseInt(localStorage.getItem('bgID')));
-    }
-  });
 
   return (
     <button
