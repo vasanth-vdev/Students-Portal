@@ -24,3 +24,21 @@ a {
 .selectField option {
   font-size: 2rem;
 }
+.royalBlue {
+  background: #99add3;
+}
+.olive {
+  background: #adad68;
+}
+.blueviolet {
+  background: #a777d3;
+}
+.chocolate {
+  background: #cc9772;
+}
+.crimson {
+  background: #d4778a;
+}
+.orange {
+  background: #e2b86b;
+}
