@@ -17,17 +17,31 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../Config/firebaseConfig';
 import Loader from '../components/Loader';
 import { useUI } from '../Context/UiContext';
+import { useFirestore } from '../Context/FirestoreContext';
+import NotifyItem from '../components/NotifyItem';
 
 const StudentDashboard = ({ children }) => {
   const [sideBar, setSideBar] = useState(false);
   const { getTheme, setTheme } = useUI();
   const sideBarHandle = () => setSideBar(!sideBar);
   const { currentUser, logOut, setData, userData } = useAuth();
+  const [notifications, setNotifications] = useState([]);
+  const [notificationBar, setNotificationBar] = useState(false);
+  const { getData } = useFirestore();
+
+  const getNotifications = async () => {
+    setNotificationBar(!notificationBar);
+    const data = await getData('notification', [
+      where('userID', '==', userData.staffID),
+    ]);
+    setNotifications(data);
+  };
 
   useEffect(() => {
     if (!currentUser) return <Navigate to='/login' />;
     getUserData();
   }, [currentUser]);
+
   const getUserData = async () => {
     const userDataRef = collection(db, 'students');
     const q = query(userDataRef, where('email', '==', currentUser.email));
@@ -135,6 +149,39 @@ const StudentDashboard = ({ children }) => {
                 </Link>
                 <div className='dashboardHeaderRight'>
                   <div
+                    className='userActionBtn notification'
+                    onClick={() => getNotifications()}>
+                    <MdOutlineNotificationsActive />
+                    <div
+                      className='notifyContainer'
+                      style={
+                        notificationBar
+                          ? { display: 'block' }
+                          : { display: 'none' }
+                      }>
+                      {notifications.length !== 0 ? (
+                        notifications.map((item, index) => (
+                          <NotifyItem
+                            key={index}
+                            content={item.message}
+                            id={item.uid}
+                            doc={item.file}
+                          />
+                        ))
+                      ) : (
+                        <p
+                          className='notifyItemContent'
+                          style={{
+                            textAlign: 'center',
+                            fontSize: '1.8rem',
+                            padding: '1rem',
+                          }}>
+                          No Notifications
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                  <div
                     className='userActionBtn'
                     style={{
                       background: getTheme().background,
@@ -143,9 +190,6 @@ const StudentDashboard = ({ children }) => {
                     onClick={() => setTheme()}>
                     <MdColorLens />
                   </div>
-                  {/* <div className='userActionBtn notification'>
-                    <MdOutlineNotificationsActive />
-                  </div> */}
                   <Link to='/ChangePassword'>
                     <div className='userActionBtn password'>
                       <MdOutlineFingerprint />
