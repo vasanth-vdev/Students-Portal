@@ -32,7 +32,7 @@ const StudentDashboard = ({ children }) => {
   const getNotifications = async () => {
     setNotificationBar(!notificationBar);
     const data = await getData('notification', [
-      where('userID', '==', userData.staffID),
+      where('userID', '==', userData.rollno),
     ]);
     setNotifications(data);
   };

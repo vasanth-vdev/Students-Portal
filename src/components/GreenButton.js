@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useUI } from '../Context/UiContext';
 import './css/GreenButton.css';
-const GreenButton = ({ children, marginCenter, ...props }) => {
+const GreenButton = ({ children, ...props }) => {
   const { getTheme } = useUI();
   return (
     <button

@@ -1,6 +1,5 @@
 import { db, storageBucket } from '../Config/firebaseConfig';
 import React, { useContext } from 'react';
-import { where } from 'firebase/firestore';
 
 import {
   addDoc,
@@ -49,6 +48,7 @@ const FirestoreProvider = ({ children }) => {
     try {
       await addDoc(dataRef, data);
     } catch (error) {
+      console.log(error);
       return `Failed to Add Data to ${table}`;
     }
   };

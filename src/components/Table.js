@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useUI } from '../Context/UiContext';
 import './css/Table.css';
 
