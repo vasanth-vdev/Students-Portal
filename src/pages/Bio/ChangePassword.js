@@ -9,7 +9,7 @@ import InputField from '../../components/InputField';
 import { useAuth } from '../../Context/AuthContext';
 import { loadModels, getFullFaceDescription } from './../../api/faceapi';
 import { useFirestore } from '../../Context/FirestoreContext';
-import { where } from 'firebase/firestore';
+import { arrayUnion, where } from 'firebase/firestore';
 import CertificateCase from '../../components/CertificateCase';
 import faceIcon from './../../assets/images/icons/faceIcon.png';
 
@@ -28,9 +28,8 @@ const CertificateViewer = styled.div`
 
 const ChangePassword = () => {
   const { passwordUpdate, logOut, userData } = useAuth();
-  const { addData, getData } = useFirestore();
+  const { addData, getData, updateData } = useFirestore();
   const [faceData, setFaceData] = useState(null);
-
   const getFaceData = async () => {
     const data = await getData('faceData', [
       where('rollno', '==', userData.rollno),
@@ -56,7 +55,7 @@ const ChangePassword = () => {
             }}
             onSubmit={async (values) => {
               if (values.password !== values.rePassword) {
-                alert(`Passwords Don't Macth`);
+                alert(`Passwords Don't Match`);
                 document.querySelector('#changePassword').reset();
               } else {
                 try {
@@ -114,17 +113,35 @@ const ChangePassword = () => {
                 document.querySelector('#facePrintForm').reset();
                 document.querySelector('#facePrintUpload').value = '';
               } else if (fullFaceDescription.length === 1) {
+                let des = new Array(...fullFaceDescription[0].descriptor);
                 const faceData = {
                   rollno: userData.rollno,
-                  date: new Date().toLocaleString(),
-                  face_data: new Array(...fullFaceDescription[0].descriptor),
                   department: userData.department,
                   batch: userData.batch,
+                  face_data: [{ des, date: new Date().toLocaleString() }],
                 };
-                await addData('faceData', faceData);
-                document.querySelector('#facePrintForm').reset();
-                document.querySelector('#facePrintUpload').value = '';
-                getFaceData();
+                const data = await getData(
+                  'faceData',
+                  [where('rollno', '==', userData.rollno)],
+                  true
+                );
+                console.log(data);
+                if (data) {
+                  await updateData('faceData', data[0].uid, {
+                    face_data: arrayUnion({
+                      des,
+                      date: new Date().toLocaleString(),
+                    }),
+                  });
+                  document.querySelector('#facePrintForm').reset();
+                  document.querySelector('#facePrintUpload').value = '';
+                  getFaceData();
+                } else {
+                  await addData('faceData', faceData);
+                  document.querySelector('#facePrintForm').reset();
+                  document.querySelector('#facePrintUpload').value = '';
+                  getFaceData();
+                }
               }
             }}>
             {({ isSubmitting, setFieldValue }) => (
@@ -134,7 +151,7 @@ const ChangePassword = () => {
                   <Field
                     type='file'
                     className='SideNameInput'
-                    name='documnet'
+                    name='photoC'
                     style={{ zIndex: 10, position: 'relative' }}
                     id='facePrintUpload'
                     onChange={(e) => {
@@ -158,23 +175,23 @@ const ChangePassword = () => {
           </Formik>
         </GlassSheet>
       </PageContent>
-      {faceData && faceData.length !== 0 && (
+      {faceData && faceData.length !== 0 && faceData[0].face_data.length !== 0 && (
         <>
           <div style={{ padding: '2.5rem' }}></div>
           <PageHeader text='Face Prints' />
           <PageContent>
             <CertificateViewer>
-              {faceData &&
-                faceData.map((item, index) => (
-                  <CertificateCase
-                    key={item.date}
-                    title={`${index + 1} - ${item.date}`}
-                    image={faceIcon}
-                    deleteUID={item.uid}
-                    tableName={'faceData'}
-                    getProjects={getFaceData}
-                  />
-                ))}
+              {faceData[0].face_data.map((item, index) => (
+                <CertificateCase
+                  key={item.date}
+                  title={`${index + 1} - ${item.date}`}
+                  image={faceIcon}
+                  arrayUpdate={item}
+                  deleteUID={faceData[0].uid}
+                  tableName={'faceData'}
+                  getProjects={getFaceData}
+                />
+              ))}
             </CertificateViewer>
           </PageContent>
         </>

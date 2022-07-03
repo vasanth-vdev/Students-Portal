@@ -52,9 +52,14 @@ const StudentDashboardData = [
               page: <StudentsAttendance />,
             },
             {
-              title: 'CA Marks',
+              title: 'Internal Marks',
               URL: 'CAMarks',
               page: <CAMarks />,
+            },
+            {
+              title: 'Semester Marks',
+              URL: 'ExamResult',
+              page: <ExamResult />,
             },
           ],
         },
@@ -63,7 +68,7 @@ const StudentDashboardData = [
           navIcon: <MdSchool />,
           subMenu: [
             {
-              title: 'Test Timetable',
+              title: 'Internals Timetable',
               URL: 'TestTimetable',
               page: <TestTimetable />,
             },
@@ -73,14 +78,9 @@ const StudentDashboardData = [
             //   page: <SeatingArrangement />,
             // },
             {
-              title: 'Exam Timetable',
+              title: 'Semester Timetable',
               URL: 'ExamTimetable',
               page: <ExamTimeTable />,
-            },
-            {
-              title: 'Exam Result',
-              URL: 'ExamResult',
-              page: <ExamResult />,
             },
           ],
         },
