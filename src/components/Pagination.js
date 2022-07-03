@@ -10,12 +10,18 @@ const Pagination = ({ pageno, pagination, handlePagination }) => {
         {pageno.map((item, index) => (
           <button
             key={index}
-            onClick={() => handlePagination(item)}
+            onClick={() => handlePagination(item.value || item)}
             style={
-              pagination === item ? { background: getTheme().background } : null
+              pagination === item.value || pagination === item
+                ? { background: getTheme().background }
+                : null
             }
-            className={pagination === item ? 'btn1 btnActive' : 'btn1'}>
-            {item}
+            className={
+              pagination === item.value || pagination === item
+                ? 'btn1 btnActive'
+                : 'btn1'
+            }>
+            {item.text || item}
           </button>
         ))}
       </div>
