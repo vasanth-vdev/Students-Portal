@@ -27,13 +27,17 @@ const FirestoreProvider = ({ children }) => {
     return await getDownloadURL(fileRef);
   };
 
-  const getData = async (table, q) => {
+  const getData = async (table, q, isAvailable) => {
     const dataRef = collection(db, table);
     try {
       if (q) {
         const qq = query(dataRef, ...q);
         const data = await getDocs(qq);
-        return data.docs.map((doc) => ({ ...doc.data(), uid: doc.id }));
+        if (isAvailable && data.empty) {
+          return false;
+        } else {
+          return data.docs.map((doc) => ({ ...doc.data(), uid: doc.id }));
+        }
       } else {
         const data = await getDocs(dataRef);
         return data.docs.map((doc) => ({ ...doc.data(), uid: doc.id }));
