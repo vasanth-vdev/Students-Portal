@@ -25,9 +25,9 @@ const Loader = ({ text, signOut }) => {
         </div>
       </div>
       <h1 className='loadingText'>{text}</h1>
-      <button className='loaderButton' onClick={signOut}>
+      {/* <button className='loaderButton' onClick={signOut}>
         Logout
-      </button>
+      </button> */}
     </div>
   );
 };
