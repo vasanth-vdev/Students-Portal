@@ -19,8 +19,8 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// if ('serviceWorker' in navigator) {
-//   navigator.serviceWorker
-//     .register(`${process.env.PUBLIC_URL}/service-worker.js`)
-//     .catch((err) => console.log('Error 💥', err));
-// }
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+    .register(`${process.env.PUBLIC_URL}/service-worker.js`)
+    .catch((err) => console.log('Error 💥', err));
+}
