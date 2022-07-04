@@ -5,6 +5,7 @@ import App from './App.js';
 import AuthenticationProvider from './Context/AuthContext.js';
 import FirestoreProvider from './Context/FirestoreContext.js';
 import UiProvider from './Context/UiContext.js';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -19,8 +20,9 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker
-    .register(`${process.env.PUBLIC_URL}/service-worker.js`)
-    .catch((err) => console.log('Error 💥', err));
-}
+// if ('serviceWorker' in navigator) {
+//   navigator.serviceWorker
+//     .register(`${process.env.PUBLIC_URL}/service-worker.js`)
+//     .catch((err) => console.log('Error 💥', err));
+// }
+serviceWorkerRegistration.register();
