@@ -6,6 +6,7 @@ import { useFirestore } from './../Context/FirestoreContext';
 import { useAuth } from './../Context/AuthContext';
 import './../assets/css/todaySchedule.css';
 import { where } from 'firebase/firestore';
+import { Link } from 'react-router-dom';
 const TodaySchedule = () => {
   const d = new Date();
   let day = d.getDay();
@@ -27,7 +28,9 @@ const TodaySchedule = () => {
   }, []);
   return (
     <div className='todaySchedulePage'>
-      <PageHeader text={`Today's Schedule`} />
+      <Link to='face'>
+        <PageHeader text={`Today's Schedule`} />
+      </Link>
       <PageContent>
         <div className='todayScheduleList'>
           {todaySchedule.length !== 0 ? (
