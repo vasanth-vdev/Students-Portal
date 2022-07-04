@@ -137,6 +137,7 @@ const Login = () => {
                     <div
                       style={{
                         alignSelf: 'center',
+                        overflow: 'hidden',
                       }}>
                       <div
                         style={{
