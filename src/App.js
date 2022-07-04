@@ -9,6 +9,7 @@ import { PrivateRoute } from './components/PrivateRoute';
 import ProfileViewer from './pages/Bio/ProfileViewer';
 import ChangePassword from './pages/Bio/ChangePassword';
 import { useAuth } from './Context/AuthContext';
+import FacePrintUpload from './pages/Bio/FacePrintUpload';
 
 const App = () => {
   //for development
@@ -54,6 +55,14 @@ const App = () => {
           )
         )}
         <Route path='/login' element={<Login />} />
+        <Route
+          path='/face'
+          element={
+            <StudentDashboard>
+              <FacePrintUpload />
+            </StudentDashboard>
+          }
+        />
         <Route
           path='/ProfileView'
           element={

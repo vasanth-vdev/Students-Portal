@@ -13,6 +13,7 @@ import CertificateManagement from '../pages/Bio/CertificateManagement';
 import StudentsAttendance from '../pages/Academic/StudentsAttendance';
 import CAMarks from '../pages/Academic/CAMarks';
 import { FaUserAlt } from 'react-icons/fa';
+
 // import { BiSitemap } from 'react-icons/bi';
 // import SeatingArrangement from '../pages/Examination/SeatingArrangement';
 // import SemesterFeeStructure from '../pages/Academic/SemesterFeeStructure';

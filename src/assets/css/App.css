@@ -42,3 +42,9 @@ a {
 .orange {
   background: #e2b86b;
 }
+label {
+  font-size: 2rem;
+  letter-spacing: 0.07rem;
+  margin: 2rem 0rem;
+  display: block;
+}
