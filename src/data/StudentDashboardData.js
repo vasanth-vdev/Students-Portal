@@ -47,11 +47,11 @@ const StudentDashboardData = [
             //   URL: 'SemesterFeeStructure',
             //   page: <SemesterFeeStructure />,
             // },
-            {
-              title: 'Attendance',
-              URL: 'StudentsAttendance',
-              page: <StudentsAttendance />,
-            },
+//            {
+//              title: 'Attendance',
+//              URL: 'StudentsAttendance',
+//              page: <StudentsAttendance />,
+//            },
             {
               title: 'Internal Marks',
               URL: 'CAMarks',

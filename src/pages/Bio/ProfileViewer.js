@@ -202,55 +202,51 @@ const ProfileViewer = () => {
               </StaffDetails>
             </DetailsContainer>
           </GlassSheet>
-          {studentCCertificates ||
-            studentCoCertificates ||
-            studentExCertificates ||
-            (studentProjects && (
-              <CertificateHeader>
-                <PageHeader text='PSG Polytechnic College' />
-              </CertificateHeader>
-            ))}
 
-          {studentCCertificates &&
-            studentCCertificates.map((item, index) => (
-              <React.Fragment key={index}>
-                <ContentHeader>Curricular</ContentHeader>
-                <CertificateViewer>
+          <React.Fragment>
+            {studentCCertificates && <ContentHeader>Curricular</ContentHeader>}
+            {studentCCertificates &&
+              studentCCertificates.map((item, index) => (
+                <CertificateViewer key={index}>
                   <CertificateCase
                     title={item.certificateName}
                     image={item.thumbnailURL}
                   />
                 </CertificateViewer>
-              </React.Fragment>
-            ))}
-          {studentCoCertificates &&
-            studentCoCertificates.map((item, index) => (
-              <React.Fragment key={index}>
-                <ContentHeader>Co - Curricular</ContentHeader>
-                <CertificateViewer>
+              ))}
+          </React.Fragment>
+          <React.Fragment>
+            {studentCoCertificates && (
+              <ContentHeader>Co - Curricular</ContentHeader>
+            )}
+            {studentCoCertificates &&
+              studentCoCertificates.map((item, index) => (
+                <CertificateViewer key={index}>
                   <CertificateCase
                     title={item.certificateName}
                     image={item.thumbnailURL}
                   />
                 </CertificateViewer>
-              </React.Fragment>
-            ))}
-          {studentExCertificates &&
-            studentExCertificates.map((item, index) => (
-              <React.Fragment key={index}>
-                <ContentHeader>Extra - Curricular</ContentHeader>
-                <CertificateViewer>
+              ))}
+          </React.Fragment>
+          <React.Fragment>
+            {studentExCertificates && (
+              <ContentHeader>Extra - Curricular</ContentHeader>
+            )}
+            {studentExCertificates &&
+              studentExCertificates.map((item, index) => (
+                <CertificateViewer key={index}>
                   <CertificateCase
                     title={item.certificateName}
                     image={item.thumbnailURL}
                   />
                 </CertificateViewer>
-              </React.Fragment>
-            ))}
-          {studentProjects &&
-            studentProjects.map((item, index) => (
-              <React.Fragment key={index}>
-                <ContentHeader>Projects</ContentHeader>
+              ))}
+          </React.Fragment>
+          <React.Fragment>
+            {studentProjects && <ContentHeader>Projects</ContentHeader>}
+            {studentProjects &&
+              studentProjects.map((item, index) => (
                 <CertificateViewer>
                   <CertificateCase
                     title={item.projectName}
@@ -258,8 +254,8 @@ const ProfileViewer = () => {
                     image={item.thumbnailURL}
                   />
                 </CertificateViewer>
-              </React.Fragment>
-            ))}
+              ))}
+          </React.Fragment>
         </Container>
       </PageContent>
     </div>
