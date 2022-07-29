@@ -10,7 +10,7 @@ import Webcam from 'react-webcam';
 import { getLoginFaceRecognition, loadModels } from '../api/faceapi.js';
 const Login = () => {
   const { currentUser, emailPasswordSignIn, error, loading } = useAuth();
-  const [loginType, setLoginType] = useState('face');
+  const [loginType, setLoginType] = useState('text');
   const [button, setButton] = useState(false);
   const [image, setImage] = useState('');
   const webcamRef = React.useRef(null);
@@ -61,8 +61,8 @@ const Login = () => {
           {loginType === 'text' ? (
             <Formik
               initialValues={{
-                email: '',
-                password: '',
+                email: '19dx27@psgpolytech.ac.in',
+                password: '19dx27',
               }}
               onSubmit={(values) => {
                 emailPasswordSignIn(values.email, values.password);

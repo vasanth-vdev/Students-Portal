@@ -136,7 +136,7 @@ const StudentDashboard = ({ children }) => {
                 : { left: '10rem', width: 'calc(100vw - 10rem)' }
             }>
             {StudentDashboardData.map((item, index) => (
-              <div className='dashboardHeader' key={index}>
+              <div className='dashboardHeader' key={userData.rollno}>
                 <Link to='/ProfileView'>
                   <div className='dashboardHeaderLeft'>
                     <img
