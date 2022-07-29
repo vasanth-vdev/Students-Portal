@@ -8,8 +8,7 @@ import './../assets/css/todaySchedule.css';
 import { where } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
 const TodaySchedule = () => {
-  const d = new Date();
-  let day = d.getDay();
+  let day = 5;
   const [todaySchedule, setTodaySchedule] = useState([]);
   const { getData } = useFirestore();
   const { userData } = useAuth();

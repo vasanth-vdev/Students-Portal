@@ -8,15 +8,9 @@ import StudentDashboardData from './data/StudentDashboardData';
 import { PrivateRoute } from './components/PrivateRoute';
 import ProfileViewer from './pages/Bio/ProfileViewer';
 import ChangePassword from './pages/Bio/ChangePassword';
-import { useAuth } from './Context/AuthContext';
 import FacePrintUpload from './pages/Bio/FacePrintUpload';
 
 const App = () => {
-  //for development
-  const { userData, currentUser } = useAuth();
-  console.log(currentUser);
-  console.log(userData);
-
   return (
     <>
       <Routes>
